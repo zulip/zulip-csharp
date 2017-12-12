@@ -19,9 +19,9 @@ app.post('/test', (request, response) => {
   const { auth } = authParser(request.get("authorization"), response)
   response.send(`
   <pre><code>
-  Request parsed succesfully
+  Request parsed successfully
   -----------------------------------
-  Recived data:
+  Received data:
     ${util.format('%o', request.body)}
 
   </code></pre>
