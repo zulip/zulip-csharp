@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing Server - Zulip C#</title>
+    <style>
+      button, input {
+        margin: 5px 6px 18px 10px;
+      }
+
+      label {
+        margin-bottom: 5px;
+      }
+      label {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Testing Server for C# Zulip API</h1>
+
+    <label>Endpoint (default test): </label>
+    <input placeholder="endpoint">
+    <button class="endpoint">Add Endpoint</button>
+
+    <label>Add field: </label>
+    <input placeholder="field">
+    <button class="field">Add Field</button>
+
+    <hr><br>
+    <form method="POST" action="test">
+      <label>Test: </label>
+      <input name="test" placeholder="test">
+
+      <input type="submit">
+    </form>
+
+    <script>
+      let form = document.querySelector('form');
+      let field = document.querySelector('.field');
+      let endpoint = document.querySelector('.endpoint');
+      let submit = document.querySelector('form input[type=submit]');
+
+      function getPrevElement(node) {
+        return node.previousElementSibling;
+      }
+
+      function addEndpoint() {
+        let input = getPrevElement(endpoint);
+        form.action = input.value;
+      }
+
+      function addField() {
+        let newField = getPrevElement(field)
+        let label = document.createElement('label');
+        label.textContent = newField.value;
+
+        let input = document.createElement('input');
+        input.setAttribute('placeholder', newField.value);
+        input.setAttribute('name', newField.value);
+
+        form.insertBefore(label, submit);
+        form.insertBefore(input, submit);
+      }
+
+      endpoint.addEventListener('click', addEndpoint);
+      field.addEventListener('click', addField);
+    </script>
+  </body>
+</html>
