@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\Samp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zulip.NetCore", "Zulip.NetCore\Zulip.NetCore.csproj", "{31AA03BA-E1D0-4616-BF48-FA2FBF447FE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZulipUnitTest", "ZulipUnitTest\ZulipUnitTest.csproj", "{1E353295-FA4F-4008-9971-9657E980DE29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZulipCSharp-xUnitTests", "ZulipCSharp-xUnitTests\ZulipCSharp-xUnitTests.csproj", "{873987E6-F824-4D89-8DD9-664D66585F74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{31AA03BA-E1D0-4616-BF48-FA2FBF447FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31AA03BA-E1D0-4616-BF48-FA2FBF447FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31AA03BA-E1D0-4616-BF48-FA2FBF447FE9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E353295-FA4F-4008-9971-9657E980DE29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E353295-FA4F-4008-9971-9657E980DE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E353295-FA4F-4008-9971-9657E980DE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E353295-FA4F-4008-9971-9657E980DE29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{873987E6-F824-4D89-8DD9-664D66585F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{873987E6-F824-4D89-8DD9-664D66585F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{873987E6-F824-4D89-8DD9-664D66585F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{873987E6-F824-4D89-8DD9-664D66585F74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
