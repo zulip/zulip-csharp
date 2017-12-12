@@ -1,0 +1,24 @@
+{
+  "name": "zulip-csharp-test-server",
+  "version": "1.0.0",
+  "description": "a library to connect to a Zulip server via API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/penCsharpener/zulipCSharp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/penCsharpener/zulipCSharp/issues"
+  },
+  "homepage": "https://github.com/penCsharpener/zulipCSharp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
