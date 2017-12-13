@@ -1,0 +1,12 @@
+!#/usr/bin/env bash
+
+set -x
+dotnet build
+
+# allow previous build to fail
+set -e
+nuget restore ZulipCSharp.sln
+msbuild /p:Configuration=Release ZulipCSharp.sln
+dotnet restore
+cd TestServer
+npm i

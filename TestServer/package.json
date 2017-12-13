@@ -4,7 +4,8 @@
   "description": "a library to connect to a Zulip server via API",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "test": "./run-tests.sh"
   },
   "repository": {
     "type": "git",
