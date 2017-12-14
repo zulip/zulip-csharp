@@ -59,6 +59,6 @@ or to run test on command prompt/terminal
 
 ```
 # on root directory
-./run-tests.cmd # for windows
+.\run-tests.cmd # for windows
 ./run-tests # for MacOS and linux
 ```
