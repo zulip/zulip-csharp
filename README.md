@@ -1,4 +1,4 @@
-# zulip-csharp 
+# zulip-csharp [![Build Status](https://travis-ci.org/zulip/zulip-csharp.svg?branch=master)](https://travis-ci.org/zulip/zulip-csharp)
 ZulipCSharp is a library to connect to a Zulip server via API based on .NET Core
 
 ## Devlopment
@@ -59,6 +59,6 @@ or to run test on command prompt/terminal
 
 ```
 # on root directory
-./run-tests.cmd # for windows
+.\run-tests.cmd # for windows
 ./run-tests # for MacOS and linux
 ```
