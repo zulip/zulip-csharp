@@ -1,5 +1,5 @@
-const { spawnSync } = require('child_process')
-const path = require('path')
+const { spawnSync } = require('child_process');
+const path = require('path');
 
 // this would export app instance of
 // already started server and
@@ -11,10 +11,10 @@ manager.on('server-started', (server) => {
     encoding: 'utf8',
     stdio: 'inherit',
     windowsHide: true
-  })
+  });
 
-  console.log(`[Test Manager] test exit code: ${test.status}`)
+  console.log(`[Test Manager] test exit code: ${test.status}`);
 
-  server.close()
-  process.exit(test.status)
+  server.close();
+  process.exit(test.status);
 })
