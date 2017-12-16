@@ -6,7 +6,7 @@ const data = require('./data');
 const { errorJSON } = data;
 
 function formatJSON(json) {
-  return util.format("%o", json);
+  return util.format("%O", json);
 }
 
 exports.authParser = function(auth) {
@@ -20,8 +20,8 @@ exports.authParser = function(auth) {
   // credentials passed will be base_64 encoded
   let credentials = new Buffer(auth.split(" ").pop(), "base64");
   credentials = credentials.toString("ascii").split(":");
-  let result = {
+  const result = {
     auth: credentials
-  };
+  }
   return result;
 }
