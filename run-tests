@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 set -e
-
 cd TestServer
+
+set -x
+npm run lint
 node test-manager
