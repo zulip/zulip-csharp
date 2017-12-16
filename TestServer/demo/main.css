@@ -40,6 +40,10 @@ form label {
   padding-left: 18px;
 }
 
+#response {
+  white-space: pre;
+}
+
 form input {
   margin-top: 10px;
   margin-left: 12px;  
