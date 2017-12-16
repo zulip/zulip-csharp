@@ -62,3 +62,10 @@ or to run test on command prompt/terminal
 ./run-tests.cmd # for windows
 ./run-tests # for MacOS and linux
 ```
+
+linting 
+```
+npm run lint
+# if you have common error use
+npm run lint-fix
+```

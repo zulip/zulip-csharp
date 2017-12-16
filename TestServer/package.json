@@ -4,6 +4,8 @@
   "description": "a library to connect to a Zulip server via API",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint . --cache",
+    "lint-fix": "eslint . --cache --fix",
     "start": "node index",
     "test": "./run-tests.sh"
   },
@@ -19,6 +21,12 @@
   },
   "homepage": "https://github.com/penCsharpener/zulipCSharp#readme",
   "dependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2"
   }
