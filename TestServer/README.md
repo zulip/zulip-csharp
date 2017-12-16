@@ -6,4 +6,27 @@ and cover all the endpoints for testing by C# Unit Tests.
 ```bash
 # to start the testing server
 npm start
+
+# to run test 
+# note that this command will run C# server tests too.
+npm test 
+```
+
+All the responses recived for this TestServer is in JSON
+and by POST method only, in exception of endpoint `/` and `/test`.
+You will recive html which is our demo page to test out all the other,
+endpoint `POST` request will no work here. `/test` endpoint is purley to
+test out and what happend to the request you made and it will no send JSON
+rather send details in text of what you did.
+
+### Testing out endpoint without demo page using curl
+
+```bash
+# For Linux and MacOS
+$ curl localhost:9991/test -u email:apikey -d "purpose=endpoint-testing&works=true" -X POST
+  Request parsed successfully
+  -----------------------------------
+  Authorization: email,apikey
+  Received data:
+  { purpose: 'endpoint-testing', works: 'true' }
 ```
