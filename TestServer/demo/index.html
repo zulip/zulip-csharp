@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing Server - Zulip C#</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+
+    <div id="input">
+      <h1>Testing Server for C# Zulip API</h1>
+
+      <label>Endpoint: test</label>
+      <input placeholder="endpoint">
+      <button class="endpoint">Add Endpoint</button>
+
+      <label>Add auth: email:apikey</label>
+      <input class="auth-email">:<input class="auth-apikey">
+      <button class="add-auth">Add Authorization</button>
+
+      <label>Add field: </label>
+      <input placeholder="field">
+      <button class="field">Add Field</button>
+
+      <hr><br>
+      <form method="POST" action="http://hello:name@localhost:8080/test">
+        <div class="field">
+            <span class="deleteField">&#10008;</span>
+            <label>Test: </label>
+            <input name="test" placeholder="test">
+        </div>
+
+        <input type="submit">
+      </form>
+    </div>
+
+    <div id="output">
+      <h1>Output</h1>
+      <div id="response"></div>
+    </div>
+
+    <script src="demo.js"></script>
+  </body>
+</html>

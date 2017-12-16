@@ -1,0 +1,52 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#input, #output {
+  margin: 0;
+  padding: 5px;
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+#input {
+  float: left;
+  padding-left: 10px;
+}
+
+#output {
+  float: right;
+  padding-right: 10px;
+}
+
+body, input, button {
+  font-family: monospace;
+}
+
+button, input {
+  margin: 5px 6px 18px 10px;
+}
+
+label {
+  margin-bottom: 5px;
+  display: block;
+}
+
+form label {
+  padding-left: 18px;
+}
+
+form input {
+  margin-top: 10px;
+  margin-left: 12px;  
+}
+
+.deleteField {
+  position: absolute;
+  color: indianred;
+  font-size: 20px;
+}
