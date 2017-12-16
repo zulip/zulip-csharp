@@ -95,14 +95,22 @@ function addAuthorization() {
 function handleForm(event) {
   let url = location.href + data.endpoint;
   let authorization = 'Basic ' + getAuth();
+  let requestHeaders = new Headers({
+    'Content-Type': 'application/x-www-form-urlencoded'
+  });
+  
+  // in authorization is empty it would be
+  // encoding `:` so would return `Basic Og==`
+  // and so only add Authorization if provided
+  if (authorization !== 'Basic Og==') {
+    requestHeaders.append('Authorization', authorization);
+  }
+
   let request = new Request(url, {
     method: 'POST',
     redirect: 'follow',
     body: getBody(),
-    headers: new Headers({
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': authorization
-    })
+    headers: requestHeaders
   });
 
   fetch(request)

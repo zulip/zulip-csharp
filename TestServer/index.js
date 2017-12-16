@@ -31,13 +31,13 @@ app.get('/demo.js', (request, response) => {
 });
 
 app.post('/test', (request, response) => {
-  const { auth } = authParser(request.get("authorization"))
-  response.send(`<pre><code>
+  const { err, auth } = authParser(request.get("authorization"));
+  response.send(err || `<pre><code>
   Request parsed successfully
   -----------------------------------
   Authorization: ${auth}
   Received data:
-    ${util.format('%o', request.body)}
+  ${util.format('%o', request.body)}
 
   </code></pre>`);
 });
