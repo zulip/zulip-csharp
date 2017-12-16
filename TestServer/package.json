@@ -1,7 +1,7 @@
 {
-  "name": "zulip-csharp-test-server",
+  "name": "test-server",
   "version": "1.0.0",
-  "description": "a library to connect to a Zulip server via API",
+  "description": "TestServer for a library to connect to a Zulip server via API",
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --cache",
@@ -11,15 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/penCsharpener/zulipCSharp.git"
+    "url": "git+https://github.com/zulip/zulip-csharp.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "Apache 2.0",
+  "keywords": [
+    "zulip-csharp",
+    "csharp",
+    "zulip",
+    "api",
+    "C#"
+  ],
+  "author": "Mattias <matthiasmueller@protonmail.com>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/penCsharpener/zulipCSharp/issues"
+    "url": "https://github.com/zulip/zulip-csharp/issues"
   },
-  "homepage": "https://github.com/penCsharpener/zulipCSharp#readme",
+  "homepage": "https://github.com/zulip/zulip-csharp#readme",
   "dependencies": {
     "eslint": "^4.9.0",
     "eslint-config-standard": "^10.2.1",
