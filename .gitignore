@@ -253,3 +253,4 @@ paket-files/
 
 # npm modules
 node_modules
+.eslintcache

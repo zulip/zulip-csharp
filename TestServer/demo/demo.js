@@ -4,7 +4,6 @@ let addAuth = document.querySelector('.add-auth');
 let email = document.querySelector('.auth-email');
 let apikey = document.querySelector('.auth-apikey');
 let endpoint = document.querySelector('.endpoint');
-let output = document.querySelector('#output');
 let submit = document.querySelector('form input[type=submit]');
 let deleteSpan = document.querySelector('form span');
 let response = document.querySelector('#response');
@@ -19,18 +18,14 @@ function getPrevElement(node) {
   return node.previousElementSibling;
 }
 
-function getNextElement(node) {
-  return node.nextElementSibling;
-}
-
 function addValue(target, value) {
-  let newVal = target.textContent.split(":");
+  let newVal = target.textContent.split(':');
 
-  if(newVal.length > 2) {
+  if (newVal.length > 2) {
     newVal.pop(2);
   }
 
-  newVal[0] += ":";
+  newVal[0] += ':';
   newVal[1] = ' ' + value;
   target.textContent = newVal.join('');
 }
@@ -46,10 +41,10 @@ function getAuth(encode = true) {
 function getBody() {
   let allFields = document.querySelectorAll('form .field input');
   let data = [];
-  allFields.forEach(function (field) {
+  allFields.forEach(function(field) {
     data.push(field.name + '=' + field.value);
   });
-  
+
   return data.join('&');
 }
 
@@ -98,7 +93,7 @@ function handleForm(event) {
   let requestHeaders = new Headers({
     'Content-Type': 'application/x-www-form-urlencoded'
   });
-  
+
   // in authorization is empty it would be
   // encoding `:` so would return `Basic Og==`
   // and so only add Authorization if provided
@@ -114,17 +109,17 @@ function handleForm(event) {
   });
 
   fetch(request)
-  .then(function (response) {
-    return response.text();
-  })
-  .then(function (rawHTML) {
-    response.innerHTML = rawHTML;
-  })
-  .catch(function (err) {
-    response.innerHTML = "We got an error";
-    response.innerHTML += err;
-    response.innerHTM += "* See devtools for more info";
-  });
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(rawHTML) {
+      response.innerHTML = rawHTML;
+    })
+    .catch(function(err) {
+      response.innerHTML = 'We got an error';
+      response.innerHTML += err;
+      response.innerHTM += '* See devtools for more info';
+    });
 
   event.preventDefault();
 }

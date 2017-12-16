@@ -10,6 +10,10 @@ npm start
 # to run test 
 # note that this command will run C# server tests too.
 npm test 
+
+# linting
+npm run lint
+npm run lint-fix
 ```
 
 All the responses recived for this TestServer is in JSON

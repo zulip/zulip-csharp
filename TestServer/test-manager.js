@@ -1,10 +1,9 @@
 const { spawnSync } = require('child_process');
-const path = require('path');
 
 // this would export app instance of
 // already started server and
 // manager that will be eventemitter
-const manager = require('./index')
+const manager = require('./index');
 
 manager.on('server-started', (server) => {
   const test = spawnSync('npm', ['test'], {
@@ -17,4 +16,4 @@ manager.on('server-started', (server) => {
 
   server.close();
   process.exit(test.status);
-})
+});
