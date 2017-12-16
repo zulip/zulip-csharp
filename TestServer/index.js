@@ -32,14 +32,13 @@ app.get('/demo.js', (request, response) => {
 
 app.post('/test', (request, response) => {
   const { err, auth } = authParser(request.get("authorization"));
-  response.send(err || `<pre><code>
+  response.send(err || `
   Request parsed successfully
   -----------------------------------
   Authorization: ${auth}
   Received data:
   ${util.format('%o', request.body)}
-
-  </code></pre>`);
+  `);
 });
 
 class Manager extends EventEmitter {}
