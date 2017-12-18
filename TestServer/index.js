@@ -16,6 +16,10 @@ app.get('/', (request, response) => {
     .sendFile(path.resolve('demo/index.html'));
 });
 
+app.get('/zulip-csharp_logo.ico', (request, response) => {
+  response.sendFile(path.resolve('../Resources/Logo/zulip-csharp_logo.ico'));
+});
+
 app.get('/main.css', (request, response) => {
   // useful for testing.
   response

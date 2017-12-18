@@ -27,10 +27,10 @@ rather send details in text of what you did.
 
 ```bash
 # For Linux and MacOS
-$ curl localhost:9991/test -u email:apikey -d "purpose=endpoint-testing&works=true" -X POST
+$ curl localhost:9991/test -u email:api_token -d "purpose=endpoint-testing&works=true" -X POST
   Request parsed successfully
   -----------------------------------
-  Authorization: email,apikey
+  Authorization: email,api_token
   Received data:
   { purpose: 'endpoint-testing', works: 'true' }
 ```
