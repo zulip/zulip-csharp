@@ -1,12 +1,19 @@
-!#/usr/bin/env bash
+#!/usr/bin/env bash
 
-set -x
-dotnet build
+# don't output the result or errors
+# of this command
+echo "Running intial build..."
+dotnet build > /dev/null 2>&1
 
 # allow previous build to fail
 set -e
+set -x
 nuget restore ZulipCSharp.sln
 msbuild /p:Configuration=Release ZulipCSharp.sln
 dotnet restore
 cd TestServer
 npm i
+s
+# make sure xunit is binded to dotnet
+cd ../UnitTests
+dotnet restore
