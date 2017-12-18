@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +7,13 @@ namespace ZulipNetCore {
 
     public class Stream {
 
+        [JsonProperty("stream_id")]
         public uint StreamID { get; set; }
+        [JsonProperty("name")]
         public string Name { get; set; }
+        [JsonProperty("description")]
         public string Description { get; set; }
+        [JsonProperty("invite_only")]
         public bool InviteOnly { get; set; }
 
         public Stream() {
