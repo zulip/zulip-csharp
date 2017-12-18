@@ -53,6 +53,7 @@
             this.testConnectionToolStripMenuItem.Name = "testConnectionToolStripMenuItem";
             this.testConnectionToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.testConnectionToolStripMenuItem.Text = "Test Connection";
+            this.testConnectionToolStripMenuItem.Click += new System.EventHandler(this.testConnectionToolStripMenuItem_Click);
             // 
             // panel_Main
             // 
