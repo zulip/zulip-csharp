@@ -13,7 +13,7 @@ msbuild /p:Configuration=Release ZulipCSharp.sln
 dotnet restore
 cd TestServer
 npm i
-s
+
 # make sure xunit is binded to dotnet
 cd ../UnitTests
 dotnet restore
