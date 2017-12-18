@@ -7,7 +7,7 @@ namespace ZulipNetCore {
         public string ServerBaseURL { get; }
         public ServerApiVersion ApiVersion { get; } = ZulipServer.ServerApiVersion.v1;
         public const string ApiPathV1 = "/api/v1";
-        public string ApiURL { get; } = ApiPathV1;
+        public string ServerApiURL { get; } = ApiPathV1;
         public Uri BaseAddress { get; }
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace ZulipNetCore {
 
             switch (ApiVersion) {
                 case ServerApiVersion.v1:
-                    this.ApiURL = ApiPathV1;
+                    this.ServerApiURL = this.ServerBaseURL + ApiPathV1;
                     break;
             }
 
