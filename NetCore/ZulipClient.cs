@@ -24,7 +24,7 @@ namespace ZulipNetCore
             this.Server = Server;
             this.Authentication = UserLogin;
 
-            httpClient = Login();
+            httpClient = Login(UserLogin.UserSecretIsPassword);
         }
 
         /// <summary>
@@ -43,10 +43,14 @@ namespace ZulipNetCore
         /// Dev comment: this probably needs to work differently when the user supplies the password rather than the api key as user secret.
         /// </summary>
         /// <returns></returns>
-        public HttpClient Login() {
+        public HttpClient Login(bool UserSecretIsPassword = false) {
             HttpClient hc = new HttpClient();
             hc.BaseAddress = Server.BaseAddress;
-            Authentication.SetAuthHeader(hc);
+            if (UserSecretIsPassword) {
+                throw new Exception("feature not yet implemented");
+            } else {
+                Authentication.SetAuthHeader(hc);
+            }
             return hc;
         }
     }
