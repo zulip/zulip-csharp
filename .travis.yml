@@ -5,6 +5,9 @@ dotnet: 2.0.0
 mono: latest
 solution: ZulipCSharp.sln
 
+cache: 
+  - TestServer/node_modules
+
 install:
   - ./build-project
 
