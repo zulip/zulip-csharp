@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +44,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages\Messages.cs" />
-    <Compile Include="ZulipClient.cs" />
+    <Compile Include="..\NetCore\BaseClasses\EndPointBase.cs">
+      <Link>BaseClasses\EndPointBase.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Helpers\EndPoints.cs">
+      <Link>Helpers\EndPoints.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Helpers\JSON.cs">
+      <Link>Helpers\JSON.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Messages\Messages.cs">
+      <Link>Messages\Messages.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Messages\PrivateMessage.cs">
+      <Link>Messages\PrivateMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Messages\StreamMessage.cs">
+      <Link>Messages\StreamMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Streams\Stream.cs">
+      <Link>Streams\Stream.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Streams\StreamCollection.cs">
+      <Link>Streams\StreamCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Streams\Streams.cs">
+      <Link>Streams\Streams.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Users\Users.cs">
+      <Link>Users\Users.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\ZulipAuthentication.cs">
+      <Link>ZulipAuthentication.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\ZulipClient.cs">
+      <Link>ZulipClient.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\ZulipServer.cs">
+      <Link>ZulipServer.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
