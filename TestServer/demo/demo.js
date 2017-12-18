@@ -2,7 +2,7 @@ let form = document.querySelector('form');
 let field = document.querySelector('.field');
 let addAuth = document.querySelector('.add-auth');
 let email = document.querySelector('.auth-email');
-let apikey = document.querySelector('.auth-apikey');
+let api_token = document.querySelector('.auth-api_token');
 let endpoint = document.querySelector('.endpoint');
 let submit = document.querySelector('form input[type=submit]');
 let deleteSpan = document.querySelector('form span');
@@ -10,7 +10,7 @@ let response = document.querySelector('#response');
 
 let data = {
   email: 'email',
-  apikey: 'apikey',
+  api_token: 'api_token',
   endpoint: 'test'
 };
 
@@ -31,7 +31,7 @@ function addValue(target, value) {
 }
 
 function getAuth(encode = true) {
-  let fullAuth = data.email + ':' + data.apikey;
+  let fullAuth = data.email + ':' + data.api_token;
   if (encode) {
     return btoa(fullAuth);
   }
@@ -83,7 +83,7 @@ function deleteField() {
 
 function addAuthorization() {
   data.email = email.value;
-  data.apikey = apikey.value;
+  data.api_token = api_token.value;
   addValue(getPrevElement(email), getAuth(false));
 }
 
