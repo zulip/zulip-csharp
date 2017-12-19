@@ -19,12 +19,12 @@ namespace ZulipNetCore
         /// Requires two objects that together enable the API user authentication.
         /// </summary>
         /// <param name="Server"></param>
-        /// <param name="UserLogin"></param>
-        public ZulipClient(ZulipServer Server, ZulipAuthentication UserLogin) {
+        /// <param name="ZulipAuth"></param>
+        public ZulipClient(ZulipServer Server, ZulipAuthentication ZulipAuth) {
             this.Server = Server;
-            this.Authentication = UserLogin;
+            this.Authentication = ZulipAuth;
 
-            httpClient = Login(UserLogin.UserSecretIsPassword);
+            httpClient = Login(ZulipAuth.UserSecretIsPassword);
         }
 
         /// <summary>
