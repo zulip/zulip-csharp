@@ -5,8 +5,26 @@ namespace SampleApp {
     public partial class UCTestConnection : UserControl {
         public UCTestConnection() {
             InitializeComponent();
-
+            SetDGVProperties();
             ToolTipsInit();
+        }
+
+        private void SetDGVProperties() {
+            dgvStreams.BackgroundColor = System.Drawing.Color.White;
+            dgvStreams.MultiSelect = true;
+            dgvStreams.AllowUserToDeleteRows = false;
+            dgvStreams.AllowUserToResizeRows = false;
+            dgvStreams.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvStreams.RowHeadersVisible = false;
+
+            // https://stackoverflow.com/questions/252689/why-does-the-doublebuffered-property-default-to-false-on-a-datagridview-and-why#254874
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+                                              System.Reflection.BindingFlags.NonPublic |
+                                              System.Reflection.BindingFlags.Instance |
+                                              System.Reflection.BindingFlags.SetProperty,
+                                              null,
+                                              dgvStreams,
+                                              new object[] { true });
         }
 
         private void ToolTipsInit() {
@@ -20,9 +38,10 @@ namespace SampleApp {
             ZulipAuthentication ZuAuth = new ZulipAuthentication(txtUsername.Text, Program.RandomAPIKey);
             ZulipClient zc = new ZulipClient(ZuSrv, ZuAuth);
             Streams streams = new Streams(zc);
-
+            await streams.GetJsonAsStringAsync();
             try {
-                txtResponse.Text = await streams.GetJsonAsString();
+                txtResponse.Text = streams.JsonOutput;
+                dgvStreams.DataSource = await streams.GetStreamsAsync();
             } catch (System.Exception) {
                 
             }
