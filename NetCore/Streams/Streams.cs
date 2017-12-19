@@ -27,7 +27,7 @@ namespace ZulipNetCore {
             string TargetURL = $"{_ZulipClient.Server.ServerApiURL}/{EndPointPath.Streams}";
             using (HttpResponseMessage Response = await _httpClient.GetAsync(TargetURL))
             using (HttpContent content = Response.Content) {
-                JsonOutput = await content.ReadAsStringAsync();
+                JsonOutput = string.Copy(await content.ReadAsStringAsync());
             }
         }
 
