@@ -13,7 +13,7 @@ namespace ZulipNetCore {
 
         public Streams(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;
-            _httpClient = ZulipClient.httpClient;
+            _httpClient = ZulipClient.Login();
         }
 
         public async Task<List<Stream>> GetStreamsAsync() {

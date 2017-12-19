@@ -14,7 +14,7 @@ namespace ZulipNetCore {
 
         public EndPointBase(ZulipClient ZulipClient) {
             this._ZulipClient = ZulipClient;
-            this._HttpClient = ZulipClient.httpClient;
+            this._HttpClient = ZulipClient.Login();
         }
 
         public async Task<string> GetJsonString(string EndPointPath) {

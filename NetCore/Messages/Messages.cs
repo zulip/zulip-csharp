@@ -13,6 +13,7 @@ namespace ZulipNetCore {
 
         public Messages(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;
+            _HttpClient = ZulipClient.Login();
         }
 
 

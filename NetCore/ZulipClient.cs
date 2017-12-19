@@ -13,7 +13,6 @@ namespace ZulipNetCore
 
         public ZulipServer Server { get; set; }
         public ZulipAuthentication Authentication { get; set; }
-        public static HttpClient httpClient;
 
         /// <summary>
         /// Requires two objects that together enable the API user authentication.
@@ -23,8 +22,6 @@ namespace ZulipNetCore
         public ZulipClient(ZulipServer Server, ZulipAuthentication ZulipAuth) {
             this.Server = Server;
             this.Authentication = ZulipAuth;
-
-            httpClient = Login(ZulipAuth.UserSecretIsPassword);
         }
 
         /// <summary>
@@ -43,10 +40,10 @@ namespace ZulipNetCore
         /// Dev comment: this probably needs to work differently when the user supplies the password rather than the api key as user secret.
         /// </summary>
         /// <returns></returns>
-        public HttpClient Login(bool UserSecretIsPassword = false) {
+        public HttpClient Login() {
             HttpClient hc = new HttpClient();
             hc.BaseAddress = Server.BaseAddress;
-            if (UserSecretIsPassword) {
+            if (Authentication.UserSecretIsPassword) {
                 throw new Exception("feature not yet implemented");
             } else {
                 Authentication.SetAuthHeader(hc);
