@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace SampleApp {
     static class Program {
+
+        public static string RandomAPIKey = "";
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
