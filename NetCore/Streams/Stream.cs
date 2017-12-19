@@ -27,5 +27,9 @@ namespace ZulipNetCore {
             this.InviteOnly = InviteOnly;
         }
 
+        public override string ToString() {
+            return $"{StreamID} {Name}";
+        }
+
     }
 }
