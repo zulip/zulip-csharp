@@ -36,6 +36,9 @@
     <StartupObject>SampleApp.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NetCore">
+      <HintPath>..\NetCore\bin\Debug\netcoreapp2.0\NetCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,9 +50,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Zulip.NetCore">
-      <HintPath>..\Zulip.NetCore\bin\Debug\netcoreapp2.0\Zulip.NetCore.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SampleApp.cs">
@@ -93,12 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ZulipClient\ZulipClient.csproj">
-      <Project>{a5d0d82d-4056-45d7-add8-ba541527a2ff}</Project>
-      <Name>ZulipClient</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TestData\" />
