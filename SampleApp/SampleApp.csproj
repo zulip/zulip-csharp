@@ -92,9 +92,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZulipCSharp\ZulipCSharp.csproj">
-      <Project>{a5d0d82d-4056-45d7-add8-ba541527a2ff}</Project>
-      <Name>ZulipCSharp</Name>
+    <ProjectReference Include="..\NetCore\NetCore.csproj">
+      <Name>ZulipNetCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
