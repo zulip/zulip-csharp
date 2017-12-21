@@ -27,6 +27,7 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Main = new System.Windows.Forms.Panel();
+            this.streamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,8 @@
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testConnectionToolStripMenuItem});
+            this.testConnectionToolStripMenuItem,
+            this.streamsToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
@@ -51,6 +53,9 @@
             // testConnectionToolStripMenuItem
             // 
             this.testConnectionToolStripMenuItem.Name = "testConnectionToolStripMenuItem";
+            this.testConnectionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testConnectionToolStripMenuItem.Text = "Users";
+            this.testConnectionToolStripMenuItem.Click += new System.EventHandler(this.UCUsersToolStripMenuItem_Click);
             // 
             // panel_Main
             // 
@@ -59,6 +64,13 @@
             this.panel_Main.Name = "panel_Main";
             this.panel_Main.Size = new System.Drawing.Size(811, 472);
             this.panel_Main.TabIndex = 1;
+            // 
+            // streamsToolStripMenuItem
+            // 
+            this.streamsToolStripMenuItem.Name = "streamsToolStripMenuItem";
+            this.streamsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.streamsToolStripMenuItem.Text = "Streams";
+            this.streamsToolStripMenuItem.Click += new System.EventHandler(this.streamsToolStripMenuItem_Click);
             // 
             // SampleApp
             // 
@@ -83,6 +95,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testConnectionToolStripMenuItem;
         private System.Windows.Forms.Panel panel_Main;
+        private System.Windows.Forms.ToolStripMenuItem streamsToolStripMenuItem;
     }
 }
 
