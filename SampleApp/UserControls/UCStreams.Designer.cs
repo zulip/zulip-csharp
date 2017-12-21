@@ -1,4 +1,4 @@
-﻿namespace SampleApp.UserControls {
+namespace SampleApp.UserControls {
     partial class UCStreams {
         /// <summary> 
         /// Required designer variable.

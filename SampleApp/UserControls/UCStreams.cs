@@ -3,10 +3,12 @@ using ZulipNetCore;
 
 namespace SampleApp.UserControls {
     public partial class UCStreams : UserControl {
+
         public UCStreams() {
             InitializeComponent();
             SetDGVProperties();
             ToolTipsInit();
+            btnGet.Click += btnGet_Click;
         }
 
         private void SetDGVProperties() {
@@ -33,7 +35,7 @@ namespace SampleApp.UserControls {
             toolTip1.SetToolTip(this.txtApiKey, "found under your profile Settings in your Zulip account");
         }
 
-        private async void btnTestConnection_Click(object sender, System.EventArgs e) {
+        private async void btnGet_Click(object sender, System.EventArgs e) {
             ZulipServer ZuSrv = new ZulipServer(txtZulipServerURL.Text);
             ZulipAuthentication ZuAuth = new ZulipAuthentication(txtUsername.Text, txtApiKey.Text);
             ZulipClient zc = new ZulipClient(ZuSrv, ZuAuth);
@@ -41,8 +43,8 @@ namespace SampleApp.UserControls {
             try {
                 dgvStreams.DataSource = await streams.GetStreamsAsync();
                 txtResponse.Text = streams.JsonOutput;
-            } catch (System.Exception) {
-
+            } catch (System.Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
     }
