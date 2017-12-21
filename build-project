@@ -5,15 +5,15 @@
 echo "Running intial build..."
 dotnet build > /dev/null 2>&1
 
+set -x
+dotnet msbuild /p:Configuration=Release ZulipCSharp.sln
+
 # allow previous build to fail
 set -e
-set -x
-nuget restore ZulipCSharp.sln
-msbuild /p:Configuration=Release ZulipCSharp.sln
-dotnet restore
+dotnet restore ZulipCSharp.sln
 cd TestServer
 npm i
 
 # make sure xunit is binded to dotnet
-cd ../UnitTests
+cd ../Tests
 dotnet restore

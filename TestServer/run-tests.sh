@@ -3,5 +3,5 @@
 set -e
 set -x
 
-cd ../UnitTests
+cd ../Tests
 dotnet xunit
