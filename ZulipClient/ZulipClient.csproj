@@ -71,6 +71,9 @@
     <Compile Include="..\NetCore\Streams\Streams.cs">
       <Link>Streams\Streams.cs</Link>
     </Compile>
+    <Compile Include="..\NetCore\Users\User.cs">
+      <Link>Users\User.cs</Link>
+    </Compile>
     <Compile Include="..\NetCore\Users\Users.cs">
       <Link>Users\Users.cs</Link>
     </Compile>
