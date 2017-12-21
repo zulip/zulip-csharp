@@ -20,10 +20,9 @@ npm i
 
 ### Linux
 Since Visual Studio IDE is not avalible for linux we need 
-to get `mono` and `dotnet`. We need mono to get `nuget` and `msbuild`
+to get `dotnet`. Node for test server.
 
  - To get dotnet follow instructions here https://www.microsoft.com/net/download/linux
- - To get mono follow instructions here http://www.mono-project.com/download/#download-lin
  - To get node follow instructions here https://nodejs.org/en/download/
 
 

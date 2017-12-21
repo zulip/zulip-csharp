@@ -2,7 +2,7 @@ dist: trusty
 language: csharp
 node_js: 8
 dotnet: 2.0.0
-mono: latest
+mono: none
 solution: ZulipCSharp.sln
 
 cache: 

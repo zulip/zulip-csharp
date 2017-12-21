@@ -254,3 +254,6 @@ paket-files/
 # npm modules
 node_modules
 .eslintcache
+
+# mac
+.DS_Store
