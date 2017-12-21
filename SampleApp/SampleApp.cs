@@ -1,4 +1,4 @@
-﻿using System.Net.Http;
+using SampleApp.UserControls;
 using System.Windows.Forms;
 
 namespace SampleApp {
@@ -8,7 +8,6 @@ namespace SampleApp {
         public SampleApp() {
             InitializeComponent();
 
-            AddUserControl(new UCTestConnection());
         }
 
         private void AddUserControl(UserControl UC) {
@@ -17,8 +16,8 @@ namespace SampleApp {
             panel_Main.Controls.Add(UC);
         }
 
-        private void testConnectionToolStripMenuItem_Click(object sender, System.EventArgs e) {
-            AddUserControl(new UCTestConnection());
+        private void streamsToolStripMenuItem_Click(object sender, System.EventArgs e) {
+            AddUserControl(new UCStreams());
         }
     }
 }

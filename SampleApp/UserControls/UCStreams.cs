@@ -1,9 +1,9 @@
 using System.Windows.Forms;
 using ZulipNetCore;
 
-namespace SampleApp {
-    public partial class UCTestConnection : UserControl {
-        public UCTestConnection() {
+namespace SampleApp.UserControls {
+    public partial class UCStreams : UserControl {
+        public UCStreams() {
             InitializeComponent();
             SetDGVProperties();
             ToolTipsInit();
@@ -35,15 +35,14 @@ namespace SampleApp {
 
         private async void btnTestConnection_Click(object sender, System.EventArgs e) {
             ZulipServer ZuSrv = new ZulipServer(txtZulipServerURL.Text);
-            ZulipAuthentication ZuAuth = new ZulipAuthentication(txtUsername.Text, Program.RandomAPIKey);
+            ZulipAuthentication ZuAuth = new ZulipAuthentication(txtUsername.Text, txtApiKey.Text);
             ZulipClient zc = new ZulipClient(ZuSrv, ZuAuth);
             Streams streams = new Streams(zc);
-            await streams.GetJsonAsStringAsync();
             try {
-                txtResponse.Text = streams.JsonOutput;
                 dgvStreams.DataSource = await streams.GetStreamsAsync();
+                txtResponse.Text = streams.JsonOutput;
             } catch (System.Exception) {
-                
+
             }
         }
     }
