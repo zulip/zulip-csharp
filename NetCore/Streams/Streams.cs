@@ -37,7 +37,7 @@ namespace ZulipNetCore {
             dynamic JObj = Json.ParseJSON(JsonOutput);
             ResponseMessage = JObj.msg;
             ResponseResult = JObj.result;
-            object ResponseArray = JObj.streams;
+            ResponseArray = JObj.streams;
         }
 
     }
