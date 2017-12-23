@@ -1,4 +1,3 @@
-using ZulipNetCore.Interfaces;
 using System.Threading.Tasks;
 using System.Net.Http;
 
