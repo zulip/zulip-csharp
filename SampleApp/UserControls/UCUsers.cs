@@ -39,7 +39,8 @@ namespace SampleApp {
             ZulipClient zc = new ZulipClient(ZuSrv, ZuAuth);
             Users users = new Users(zc);
             try {
-                dgvStreams.DataSource = await users.GetUsersAsync();
+                await users.GetUsersAsync();
+                dgvStreams.DataSource = users.UserCollection;
                 txtResponse.Text = users.JsonOutput;
             } catch (System.Exception) {
                 

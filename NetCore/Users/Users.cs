@@ -1,46 +1,33 @@
 using System.Net.Http;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ZulipNetCore {
 
-    public class Users {
+    public class Users : EndPointBase {
 
-        private static HttpClient _httpClient;
-        private static ZulipClient _ZulipClient;
-        public string JsonOutput;
-        public string ResponseMessage { get; private set; }
-        public string ResponseResult { get; private set; }
-        private object ResponseArray;
-        //public UserCollection UsersCollection { get; set; }
+        public UserCollection UserCollection { get; set; }
 
         public Users(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;
-            _httpClient = ZulipClient.Login();
+            _HttpClient = ZulipClient.Login();
         }
 
-        public async Task<List<User>> GetUsersAsync() {
-            await GetJsonAsStringAsync();
-            var Json = new JSONHelper();
-
-            return Json.ParseJArray<User>(ResponseArray);
+        public async Task GetUsersAsync() {
+            await GetJsonAsStringAsync(EndPointPath.Users);
         }
 
-        private async Task GetJsonAsStringAsync() {
-            // extra string variable not needed but useful for debugging
-            string TargetURL = $"{_ZulipClient.Server.ServerApiURL}/{EndPointPath.Users}";
-            using (HttpResponseMessage Response = await _httpClient.GetAsync(TargetURL))
-            using (HttpContent content = Response.Content) {
-                JsonOutput = string.Copy(await content.ReadAsStringAsync());
-            }
+        protected override void ParseResponse() {
             var Json = new JSONHelper();
             dynamic JObj = Json.ParseJSON(JsonOutput);
             ResponseMessage = JObj.msg;
             ResponseResult = JObj.result;
             ResponseArray = JObj.members;
-        }
 
+            UserCollection = new UserCollection();
+            foreach (var user in Json.ParseJArray<User>(ResponseArray)) {
+                this.UserCollection.Add(user);
+            }
+        }
     }
 }
