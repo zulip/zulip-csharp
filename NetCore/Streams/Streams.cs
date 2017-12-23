@@ -25,8 +25,11 @@ namespace ZulipNetCore {
             ResponseArray = JObj.streams;
 
             StreamCollection = new StreamCollection();
-            foreach (var stream in Json.ParseJArray<Stream>(ResponseArray)) {
-                this.StreamCollection.Add(stream);
+            var result = Json.ParseJArray<Stream>(ResponseArray);
+            if (result != null) {
+                foreach (var stream in result) {
+                    this.StreamCollection.Add(stream);
+                }
             }
         }
     }

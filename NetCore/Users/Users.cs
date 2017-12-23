@@ -25,8 +25,11 @@ namespace ZulipNetCore {
             ResponseArray = JObj.members;
 
             UserCollection = new UserCollection();
-            foreach (var user in Json.ParseJArray<User>(ResponseArray)) {
-                this.UserCollection.Add(user);
+            var result = Json.ParseJArray<User>(ResponseArray);
+            if (result != null) {
+                foreach (var user in result) {
+                    this.UserCollection.Add(user);
+                }
             }
         }
     }
