@@ -70,6 +70,7 @@
     <Compile Include="UserControls\UCUsers.Designer.cs">
       <DependentUpon>UCUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewHelpers\DataGridViewHelper.cs" />
     <EmbeddedResource Include="SampleApp.resx">
       <DependentUpon>SampleApp.cs</DependentUpon>
     </EmbeddedResource>

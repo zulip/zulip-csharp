@@ -29,16 +29,10 @@ namespace SampleApp.UserControls {
             this.dgvStreams = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtResponse = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnGet = new System.Windows.Forms.Button();
-            this.txtApiKey = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtZulipServerURL = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnGet = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStreams)).BeginInit();
             this.panel1.SuspendLayout();
@@ -88,94 +82,40 @@ namespace SampleApp.UserControls {
             // txtResponse
             // 
             this.txtResponse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResponse.Location = new System.Drawing.Point(0, 117);
+            this.txtResponse.Location = new System.Drawing.Point(0, 56);
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResponse.Size = new System.Drawing.Size(298, 351);
+            this.txtResponse.Size = new System.Drawing.Size(298, 412);
             this.txtResponse.TabIndex = 3;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.txtUsername);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.btnGet);
-            this.panel2.Controls.Add(this.txtApiKey);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txtZulipServerURL);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(298, 117);
-            this.panel2.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Zulip Server";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(110, 37);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(174, 20);
-            this.txtUsername.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "User name (email)";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 99);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Response";
             // 
             // btnGet
             // 
-            this.btnGet.Location = new System.Drawing.Point(175, 89);
+            this.btnGet.Location = new System.Drawing.Point(88, 14);
             this.btnGet.Name = "btnGet";
             this.btnGet.Size = new System.Drawing.Size(109, 23);
             this.btnGet.TabIndex = 2;
             this.btnGet.Text = "Get Streams";
             this.btnGet.UseVisualStyleBackColor = true;
             // 
-            // txtApiKey
+            // label4
             // 
-            this.txtApiKey.Location = new System.Drawing.Point(110, 63);
-            this.txtApiKey.Name = "txtApiKey";
-            this.txtApiKey.Size = new System.Drawing.Size(174, 20);
-            this.txtApiKey.TabIndex = 0;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Response";
             // 
-            // label2
+            // panel2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "API key";
-            // 
-            // txtZulipServerURL
-            // 
-            this.txtZulipServerURL.Location = new System.Drawing.Point(110, 2);
-            this.txtZulipServerURL.Name = "txtZulipServerURL";
-            this.txtZulipServerURL.Size = new System.Drawing.Size(174, 20);
-            this.txtZulipServerURL.TabIndex = 0;
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.btnGet);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(298, 56);
+            this.panel2.TabIndex = 4;
             // 
             // UCStreams
             // 
@@ -201,15 +141,9 @@ namespace SampleApp.UserControls {
         private System.Windows.Forms.DataGridView dgvStreams;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtResponse;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnGet;
-        private System.Windows.Forms.TextBox txtApiKey;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtZulipServerURL;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
