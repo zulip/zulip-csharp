@@ -41,7 +41,8 @@ namespace SampleApp.UserControls {
             ZulipClient zc = new ZulipClient(ZuSrv, ZuAuth);
             Streams streams = new Streams(zc);
             try {
-                dgvStreams.DataSource = await streams.GetStreamsAsync();
+                await streams.GetStreamsAsync();
+                dgvStreams.DataSource = streams.StreamCollection;
                 txtResponse.Text = streams.JsonOutput;
             } catch (System.Exception ex) {
                 MessageBox.Show(ex.Message);

@@ -4,41 +4,30 @@ using System.Threading.Tasks;
 
 namespace ZulipNetCore {
 
-    public class Streams {
+    public class Streams : EndPointBase {
 
-        private static HttpClient _httpClient;
-        private static ZulipClient _ZulipClient;
-        public string JsonOutput;
-        public string ResponseMessage { get; private set; }
-        public string ResponseResult { get; private set; }
-        private object ResponseArray;
-        public StreamCollection StreamsCollection { get; set; }
+        public StreamCollection StreamCollection { get; private set; }
 
         public Streams(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;
-            _httpClient = ZulipClient.Login();
+            _HttpClient = ZulipClient.Login();
         }
 
-        public async Task<List<Stream>> GetStreamsAsync() {
-            await GetJsonAsStringAsync();
-            var Json = new JSONHelper();
-
-            return Json.ParseJArray<Stream>(ResponseArray);
+        public async Task GetStreamsAsync() {
+            await GetJsonAsStringAsync(EndPointPath.Streams);
         }
 
-        private async Task GetJsonAsStringAsync() {
-            // extra string variable not needed but useful for debugging
-            string TargetURL = $"{_ZulipClient.Server.ServerApiURL}/{EndPointPath.Streams}";
-            using (HttpResponseMessage Response = await _httpClient.GetAsync(TargetURL))
-            using (HttpContent content = Response.Content) {
-                JsonOutput = string.Copy(await content.ReadAsStringAsync());
-            }
+        protected override void ParseResponse() {
             var Json = new JSONHelper();
             dynamic JObj = Json.ParseJSON(JsonOutput);
             ResponseMessage = JObj.msg;
             ResponseResult = JObj.result;
             ResponseArray = JObj.streams;
-        }
 
+            StreamCollection = new StreamCollection();
+            foreach (var stream in Json.ParseJArray<Stream>(ResponseArray)) {
+                this.StreamCollection.Add(stream);
+            }
+        }
     }
 }

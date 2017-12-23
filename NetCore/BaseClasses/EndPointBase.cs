@@ -1,3 +1,4 @@
+using ZulipNetCore.Interfaces;
 using System.Threading.Tasks;
 using System.Net.Http;
 
@@ -5,25 +6,32 @@ namespace ZulipNetCore {
 
     public abstract class EndPointBase {
 
-        public ZulipClient _ZulipClient { get; set; }
-        private HttpClient _HttpClient;
+        protected static HttpClient _HttpClient;
+        protected static ZulipClient _ZulipClient;
+        public string JsonOutput;
+        virtual public string ResponseMessage { get; protected set; }
+        virtual public string ResponseResult { get; protected set; }
+        protected object ResponseArray;
 
         public EndPointBase() {
 
         }
 
-        public EndPointBase(ZulipClient ZulipClient) {
-            this._ZulipClient = ZulipClient;
-            this._HttpClient = ZulipClient.Login();
+        protected EndPointBase(ZulipClient ZulipClient) {
+            _ZulipClient = ZulipClient;
+            _HttpClient = ZulipClient.Login();
         }
 
-        public async Task<string> GetJsonString(string EndPointPath) {
-            // extra string variable not needed but useful for debugging
-            string TargetURL = $"{_ZulipClient.Server.BaseAddress.AbsoluteUri}/{EndPointPath}";
+        protected virtual async Task GetJsonAsStringAsync(string EndPointPath) {
+            string TargetURL = $"{_ZulipClient.Server.ServerApiURL}/{EndPointPath}";
             using (HttpResponseMessage Response = await _HttpClient.GetAsync(TargetURL))
             using (HttpContent content = Response.Content) {
-                return await content.ReadAsStringAsync();
+                JsonOutput = string.Copy(await content.ReadAsStringAsync());
             }
+            ParseResponse();
         }
+
+        abstract protected void ParseResponse();
+
     }
 }
