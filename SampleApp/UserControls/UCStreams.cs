@@ -6,27 +6,9 @@ namespace SampleApp.UserControls {
 
         public UCStreams() {
             InitializeComponent();
-            SetDGVProperties();
+            ViewHelpers.DataGridViewHelper.SetDGVProperties(dgvStreams);
             ToolTipsInit();
             btnGet.Click += btnGet_Click;
-        }
-
-        private void SetDGVProperties() {
-            dgvStreams.BackgroundColor = System.Drawing.Color.White;
-            dgvStreams.MultiSelect = true;
-            dgvStreams.AllowUserToDeleteRows = false;
-            dgvStreams.AllowUserToResizeRows = false;
-            dgvStreams.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dgvStreams.RowHeadersVisible = false;
-
-            // https://stackoverflow.com/questions/252689/why-does-the-doublebuffered-property-default-to-false-on-a-datagridview-and-why#254874
-            typeof(DataGridView).InvokeMember("DoubleBuffered",
-                                              System.Reflection.BindingFlags.NonPublic |
-                                              System.Reflection.BindingFlags.Instance |
-                                              System.Reflection.BindingFlags.SetProperty,
-                                              null,
-                                              dgvStreams,
-                                              new object[] { true });
         }
 
         private void ToolTipsInit() {

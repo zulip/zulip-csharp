@@ -34,13 +34,13 @@ namespace SampleApp {
             this.btnGet = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.dgvStreams = new System.Windows.Forms.DataGridView();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtResponse = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStreams)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -106,7 +106,7 @@ namespace SampleApp {
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.splitter1);
-            this.groupBox1.Controls.Add(this.dgvStreams);
+            this.groupBox1.Controls.Add(this.dgvUsers);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -126,12 +126,12 @@ namespace SampleApp {
             // 
             // dgvStreams
             // 
-            this.dgvStreams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStreams.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStreams.Location = new System.Drawing.Point(301, 16);
-            this.dgvStreams.Name = "dgvStreams";
-            this.dgvStreams.Size = new System.Drawing.Size(443, 340);
-            this.dgvStreams.TabIndex = 4;
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsers.Location = new System.Drawing.Point(301, 16);
+            this.dgvUsers.Name = "dgvStreams";
+            this.dgvUsers.Size = new System.Drawing.Size(443, 340);
+            this.dgvUsers.TabIndex = 4;
             // 
             // panel1
             // 
@@ -186,7 +186,7 @@ namespace SampleApp {
             this.Name = "UCUsers";
             this.Size = new System.Drawing.Size(747, 359);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStreams)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -208,7 +208,7 @@ namespace SampleApp {
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtResponse;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dgvStreams;
+        private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Splitter splitter1;
