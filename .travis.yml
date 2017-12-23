@@ -16,4 +16,4 @@ script:
 
 notifications:
   webhooks:
-    - https://dotnet.zulipchat.com/api/v1/external/travis?stream=CI&topic=build-status&api_key=k1gIKIdX2Bp7VP1v2VhTclkAv4vTB9rx
+    - https://dotnet.zulipchat.com/api/v1/external/travis?stream=CI&topic=build-status&api_key=$TRAVIS_BOT_KEY
