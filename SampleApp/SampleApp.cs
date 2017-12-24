@@ -9,9 +9,9 @@ namespace SampleApp {
             InitializeComponent();
             ToolTipsInit();
             AddHandlers();
+            AddUserControl(new UCMessages());
         }
 
-            AddUserControl(new UCUsers());
         private void ToolTipsInit() {
             toolTip1.SetToolTip(this.txtZulipServerURL, "ie. 'myServer.zulipchat.com'");
             toolTip1.SetToolTip(this.txtUsername, "is the email address associated to your account on that server or a bot-name@yourzulipserver");
@@ -36,6 +36,10 @@ namespace SampleApp {
 
         private void streamsToolStripMenuItem_Click(object sender, System.EventArgs e) {
             AddUserControl(new UCStreams());
+        }
+
+        private void messagesToolStripMenuItem_Click(object sender, System.EventArgs e) {
+            AddUserControl(new UCMessages());
         }
 
         private void txtLogin_TextChanged(object sender, System.EventArgs e) {

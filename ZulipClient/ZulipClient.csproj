@@ -53,6 +53,15 @@
     <Compile Include="..\NetCore\Helpers\JSON.cs">
       <Link>Helpers\JSON.cs</Link>
     </Compile>
+    <Compile Include="..\NetCore\Interfaces\IParseResponse.cs">
+      <Link>Interfaces\IParseResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Messages\Message.cs">
+      <Link>Messages\Message.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Messages\MessageCollection.cs">
+      <Link>Messages\MessageCollection.cs</Link>
+    </Compile>
     <Compile Include="..\NetCore\Messages\Messages.cs">
       <Link>Messages\Messages.cs</Link>
     </Compile>
@@ -70,6 +79,9 @@
     </Compile>
     <Compile Include="..\NetCore\Streams\Streams.cs">
       <Link>Streams\Streams.cs</Link>
+    </Compile>
+    <Compile Include="..\NetCore\Users\BotTypes.cs">
+      <Link>Users\BotTypes.cs</Link>
     </Compile>
     <Compile Include="..\NetCore\Users\User.cs">
       <Link>Users\User.cs</Link>

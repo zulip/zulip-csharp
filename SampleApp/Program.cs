@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZulipNetCore;
 
 namespace SampleApp {
     static class Program {
 
-        public static string RandomAPIKey = "";
+        public static string ServerURL { get; set; }
+        public static string UserEmail { get; set; }
+        public static string UserSecret { get; set; }
+
+        public static ZulipClient client;
+
+        public static void GetZulipClient() {
+            ZulipServer ZuSrv = new ZulipServer(ServerURL);
+            ZulipAuthentication ZuAuth = new ZulipAuthentication(UserEmail, UserSecret);
+            client = new ZulipClient(ZuSrv, ZuAuth);
+        }
 
         /// <summary>
         /// The main entry point for the application.

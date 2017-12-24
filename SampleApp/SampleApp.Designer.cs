@@ -56,7 +56,8 @@
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testConnectionToolStripMenuItem,
-            this.streamsToolStripMenuItem});
+            this.streamsToolStripMenuItem,
+            this.messagesToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
@@ -74,6 +75,14 @@
             this.streamsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.streamsToolStripMenuItem.Text = "Streams";
             this.streamsToolStripMenuItem.Click += new System.EventHandler(this.streamsToolStripMenuItem_Click);
+            // 
+            // messagesToolStripMenuItem
+            // 
+            this.messagesToolStripMenuItem.Name = "messagesToolStripMenuItem";
+            this.messagesToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.messagesToolStripMenuItem.Text = "Messages";
+            this.messagesToolStripMenuItem.Click += new System.EventHandler(this.messagesToolStripMenuItem_Click);
+            // 
             // panel_Main
             // 
             this.panel_Main.Dock = System.Windows.Forms.DockStyle.Fill;
