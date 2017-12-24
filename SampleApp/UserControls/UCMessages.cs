@@ -21,7 +21,8 @@ namespace SampleApp.UserControls {
         private void BtnSendToStream_Click(object sender, EventArgs e) {
             if (cboStreams.SelectedValue != null && txtStreamMsg.Text != "" && txtStreamTopic.Text != "") {
                 try {
-                    
+                    var sm = new StreamMessage(Program.client);
+                    sm.PostStreamMessage(cboStreams.SelectedValue.ToString(), txtStreamTopic.Text, txtStreamMsg.Text);
                 } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
