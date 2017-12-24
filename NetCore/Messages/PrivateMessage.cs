@@ -52,7 +52,7 @@ namespace ZulipNetCore {
             dynamic JObj = Json.ParseJSON(JsonOutput);
             ResponseMessage = JObj.msg;
             ResponseResult = JObj.result;
-            ResponseResult = JObj.id;
+            ResponseID = JObj.id;
         }
     }
 }
