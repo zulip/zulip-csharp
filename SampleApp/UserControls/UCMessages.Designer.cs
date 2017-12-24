@@ -52,6 +52,8 @@ namespace SampleApp.UserControls {
             this.label1 = new System.Windows.Forms.Label();
             this.txtStreamTopic = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblStreamResponse = new System.Windows.Forms.Label();
+            this.lblPMResponse = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMessages)).BeginInit();
             this.panel1.SuspendLayout();
@@ -166,6 +168,7 @@ namespace SampleApp.UserControls {
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lblStreamResponse);
             this.panel3.Controls.Add(this.txtStreamTopic);
             this.panel3.Controls.Add(this.btnSendToStream);
             this.panel3.Controls.Add(this.cboStreams);
@@ -234,6 +237,7 @@ namespace SampleApp.UserControls {
             // 
             // panel_PMSend
             // 
+            this.panel_PMSend.Controls.Add(this.lblPMResponse);
             this.panel_PMSend.Controls.Add(this.lnkFillCombos);
             this.panel_PMSend.Controls.Add(this.btnSendToPrivate);
             this.panel_PMSend.Controls.Add(this.cboUsers);
@@ -325,6 +329,24 @@ namespace SampleApp.UserControls {
             this.label8.TabIndex = 0;
             this.label8.Text = "Topic";
             // 
+            // lblStreamResponse
+            // 
+            this.lblStreamResponse.AutoSize = true;
+            this.lblStreamResponse.Location = new System.Drawing.Point(98, 152);
+            this.lblStreamResponse.Name = "lblStreamResponse";
+            this.lblStreamResponse.Size = new System.Drawing.Size(35, 13);
+            this.lblStreamResponse.TabIndex = 6;
+            this.lblStreamResponse.Text = "label9";
+            // 
+            // lblPMResponse
+            // 
+            this.lblPMResponse.AutoSize = true;
+            this.lblPMResponse.Location = new System.Drawing.Point(98, 152);
+            this.lblPMResponse.Name = "lblPMResponse";
+            this.lblPMResponse.Size = new System.Drawing.Size(35, 13);
+            this.lblPMResponse.TabIndex = 6;
+            this.lblPMResponse.Text = "label9";
+            // 
             // UCMessages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,5 +401,7 @@ namespace SampleApp.UserControls {
         private System.Windows.Forms.LinkLabel lnkFillCombos;
         private System.Windows.Forms.TextBox txtStreamTopic;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblStreamResponse;
+        private System.Windows.Forms.Label lblPMResponse;
     }
 }

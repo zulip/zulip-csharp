@@ -47,6 +47,9 @@
     <Compile Include="..\NetCore\BaseClasses\EndPointBase.cs">
       <Link>BaseClasses\EndPointBase.cs</Link>
     </Compile>
+    <Compile Include="..\NetCore\BaseClasses\EndPointSendMessage.cs">
+      <Link>BaseClasses\EndPointSendMessage.cs</Link>
+    </Compile>
     <Compile Include="..\NetCore\Helpers\EndPoints.cs">
       <Link>Helpers\EndPoints.cs</Link>
     </Compile>

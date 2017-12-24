@@ -23,6 +23,7 @@ namespace SampleApp.UserControls {
                 try {
                     var sm = new StreamMessage(Program.client);
                     sm.PostStreamMessage(cboStreams.SelectedValue.ToString(), txtStreamTopic.Text, txtStreamMsg.Text);
+                    lblStreamResponse.Text = $"{sm.ResponseResult}: id {sm.ResponseID}";
                 } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
@@ -34,6 +35,7 @@ namespace SampleApp.UserControls {
                 try {
                     var pm = new PrivateMessage(Program.client);
                     pm.PostPrivateMessage(cboUsers.SelectedValue.ToString(), txtPrivateMsg.Text);
+                    lblPMResponse.Text = $"{pm.ResponseResult}: id {pm.ResponseID}";
                 } catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
@@ -56,6 +58,8 @@ namespace SampleApp.UserControls {
             txtPrivateMsg.Text = $"new private message sent via .NET client at {DateTime.Now}";
             txtStreamMsg.Text = $"new stream message sent via .NET client at {DateTime.Now}";
             txtStreamTopic.Text = "API Test";
+            lblPMResponse.Text = "";
+            lblStreamResponse.Text = "";
         }
 
         private async void lnkFillCombos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
