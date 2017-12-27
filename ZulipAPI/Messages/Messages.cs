@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class Messages : EndPointBase {
 

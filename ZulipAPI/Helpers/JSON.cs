@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public static class JSONHelper {
 

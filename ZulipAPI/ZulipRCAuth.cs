@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class ZulipRCAuth {
 

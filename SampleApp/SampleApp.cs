@@ -1,5 +1,5 @@
 using System;
-using ZulipNetCore;
+using ZulipAPI;
 using System.IO;
 using SampleApp.UserControls;
 using System.Windows.Forms;

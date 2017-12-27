@@ -1,6 +1,6 @@
 using System;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class ZulipServer {
 

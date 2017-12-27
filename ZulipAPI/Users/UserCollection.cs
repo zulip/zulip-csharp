@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class UserCollection : CollectionBase, IEnumerable, IEnumerator {
 
