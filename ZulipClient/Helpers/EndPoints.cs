@@ -1,4 +1,4 @@
-namespace ZulipNetCore
+namespace ZulipAPI
 {
     public enum EndPoint {
         FetchApiKey,

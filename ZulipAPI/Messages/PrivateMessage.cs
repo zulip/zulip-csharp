@@ -1,10 +1,10 @@
-using ZulipNetCore.Interfaces;
+using ZulipAPI.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class PrivateMessage : EndPointSendMessage {
 
