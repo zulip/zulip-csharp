@@ -29,11 +29,9 @@ namespace ZulipNetCore
         /// </summary>
         /// <param name="ZulipRCPath"></param>
         public ZulipClient(string ZulipRCPath) {
-            throw new Exception("feature not implemented yet");
-            /* requires System.IO namespace
-             * needs to be parsed with Json.NET
-             * includes the server URL which needs to initialise the ZulipServer object
-             */
+            var AuthHelper = new ZulipRCAuth(ZulipRCPath);
+            this.Server = AuthHelper.Server;
+            this.Authentication = AuthHelper.ZulipAuth;
         }
 
         /// <summary>
