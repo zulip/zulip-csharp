@@ -2,7 +2,7 @@ using System;
 using System.Net.Http;
 using System.Text;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class ZulipAuthentication {
 

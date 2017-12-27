@@ -1,12 +1,12 @@
 using System;
 using Xunit;
-using ZulipNetCore;
+using ZulipAPI;
 
 namespace ZulipAPITests.Serveless
 {
 
     public class AuthTests {
-      
+
       public string UserEmail = "TestingAuth@ZulipApi.net";
       public string Password = "TestingPassword";
       public string UserSecret = "TestingAPISecret";
@@ -33,7 +33,7 @@ namespace ZulipAPITests.Serveless
       [Trait("Category", "AuthTests")]
       public void SecretIsPasswordTest() {
         Assert.Throws<Exception>(() => {
-          ZulipAuthentication Auth = 
+          ZulipAuthentication Auth =
             new ZulipAuthentication(UserEmail, UserSecret, true);
         });
       }

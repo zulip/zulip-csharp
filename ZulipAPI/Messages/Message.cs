@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class Message {
 

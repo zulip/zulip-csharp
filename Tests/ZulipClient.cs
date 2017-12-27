@@ -1,6 +1,6 @@
 using Xunit;
 using System;
-using ZulipNetCore;
+using ZulipAPI;
 
 namespace ZulipAPITests.Serverless
 {

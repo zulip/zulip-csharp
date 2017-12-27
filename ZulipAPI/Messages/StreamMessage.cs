@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
-using ZulipNetCore.Interfaces;
+using ZulipAPI.Interfaces;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class StreamMessage : EndPointSendMessage {
 

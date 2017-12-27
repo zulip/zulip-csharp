@@ -1,6 +1,6 @@
 using Newtonsoft.Json.Linq;
 
-namespace ZulipNetCore
+namespace ZulipAPI
 {
   class JSONHelper {
     public JObject ParseJSON(string JsonResponse) {

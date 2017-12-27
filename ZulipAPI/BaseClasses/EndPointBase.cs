@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using System.Net.Http;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public abstract class EndPointBase {
 

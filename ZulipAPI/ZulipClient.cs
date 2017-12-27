@@ -2,7 +2,7 @@ using System;
 using System.Net.Http;
 using System.Text;
 
-namespace ZulipNetCore
+namespace ZulipAPI
 {
     /// <summary>
     /// This class is the core of every other connection. It implements an HttpClient object and
