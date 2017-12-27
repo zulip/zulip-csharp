@@ -50,6 +50,9 @@
     <Compile Include="..\NetCore\BaseClasses\EndPointSendMessage.cs">
       <Link>BaseClasses\EndPointSendMessage.cs</Link>
     </Compile>
+    <Compile Include="..\NetCore\Exceptions\InvalidZulipRCFileException.cs">
+      <Link>Exceptions\InvalidZulipRCFileException.cs</Link>
+    </Compile>
     <Compile Include="..\NetCore\Helpers\EndPoints.cs">
       <Link>Helpers\EndPoints.cs</Link>
     </Compile>

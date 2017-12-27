@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.IO;
 
 namespace ZulipNetCore {
@@ -20,28 +21,43 @@ namespace ZulipNetCore {
 
             if (File.Exists(ZulipRCPath)) {
                 var zuliprc = new StreamReader(ZulipRCPath);
-                while ((line = zuliprc.ReadLine()) != null) {
-                    if (line.Contains("=")) {
-                        var KeyValPair = line.Split('=');
-                        switch (KeyValPair[0]) {
-                            case "email":
-                                Username = KeyValPair[1];
-                                break;
-                            case "key":
-                                UserSecret = KeyValPair[1];
-                                break;
-                            case "site":
-                                ServerURL = KeyValPair[1];
-                                break;
+                if (ZulipRCIsValid(zuliprc)) {
+                    while ((line = zuliprc.ReadLine()) != null) {
+                        if (line.Contains("=")) {
+                            var KeyValPair = line.Split('=');
+                            switch (KeyValPair[0]) {
+                                case "email":
+                                    Username = KeyValPair[1];
+                                    break;
+                                case "key":
+                                    UserSecret = KeyValPair[1];
+                                    break;
+                                case "site":
+                                    ServerURL = KeyValPair[1];
+                                    break;
+                            }
                         }
                     }
+                } else {
+                    zuliprc.Dispose();
+                    throw new InvalidZulipRCFileException("Invalid .zuliprc file.");
                 }
+                zuliprc.Dispose();
             } else {
-                throw new System.Exception("give me proper error message");
+                throw new FileNotFoundException(ZulipRCPath + "could not be found.");
             }
 
             Server = new ZulipServer(ServerURL);
             ZulipAuth = new ZulipAuthentication(Username, UserSecret);
+        }
+
+        private bool ZulipRCIsValid(StreamReader sr) {
+            string fullZulipRC = sr.ReadToEnd();
+            if (fullZulipRC.Contains("email=") && fullZulipRC.Contains("key=") && fullZulipRC.Contains("site=")) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }
