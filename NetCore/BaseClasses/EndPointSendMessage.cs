@@ -38,8 +38,7 @@ namespace ZulipNetCore {
         }
 
         protected virtual void ParseResponse() {
-            var Json = new JSONHelper();
-            dynamic JObj = Json.ParseJSON(JsonOutput);
+            dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
             ResponseMessage = JObj.msg;
             ResponseResult = JObj.result;
             ResponseID = JObj.id;

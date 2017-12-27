@@ -18,14 +18,13 @@ namespace ZulipNetCore {
         }
 
         protected override void ParseResponse() {
-            var Json = new JSONHelper();
-            dynamic JObj = Json.ParseJSON(JsonOutput);
+            dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
             ResponseMessage = JObj.msg;
             ResponseResult = JObj.result;
             ResponseArray = JObj.streams;
 
             StreamCollection = new StreamCollection();
-            var result = Json.ParseJArray<Stream>(ResponseArray);
+            var result = JSONHelper.ParseJArray<Stream>(ResponseArray);
             if (result != null) {
                 foreach (var stream in result) {
                     this.StreamCollection.Add(stream);
