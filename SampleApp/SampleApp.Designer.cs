@@ -1,4 +1,4 @@
-﻿namespace SampleApp {
+namespace SampleApp {
     partial class SampleApp {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtZulipServerURL = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lnkZulipRCAuth = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.panel_Login.SuspendLayout();
             this.SuspendLayout();
@@ -94,6 +95,7 @@
             // panel_Login
             // 
             this.panel_Login.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel_Login.Controls.Add(this.lnkZulipRCAuth);
             this.panel_Login.Controls.Add(this.label3);
             this.panel_Login.Controls.Add(this.txtUsername);
             this.panel_Login.Controls.Add(this.label1);
@@ -154,6 +156,16 @@
             this.txtZulipServerURL.Size = new System.Drawing.Size(174, 20);
             this.txtZulipServerURL.TabIndex = 4;
             // 
+            // lnkZulipRCAuth
+            // 
+            this.lnkZulipRCAuth.AutoSize = true;
+            this.lnkZulipRCAuth.Location = new System.Drawing.Point(348, 40);
+            this.lnkZulipRCAuth.Name = "lnkZulipRCAuth";
+            this.lnkZulipRCAuth.Size = new System.Drawing.Size(149, 13);
+            this.lnkZulipRCAuth.TabIndex = 8;
+            this.lnkZulipRCAuth.TabStop = true;
+            this.lnkZulipRCAuth.Text = "Authentication with .zuliprc file";
+            // 
             // SampleApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,6 +202,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtZulipServerURL;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.LinkLabel lnkZulipRCAuth;
     }
 }
 
