@@ -21,7 +21,7 @@ namespace ZulipAPI {
 
             if (File.Exists(ZulipRCPath)) {
                 var zuliprc = new StreamReader(ZulipRCPath);
-                if (ZulipRCIsValid(zuliprc)) {
+                if (ZulipRCIsValid(ZulipRCPath)) {
                     while ((line = zuliprc.ReadLine()) != null) {
                         if (line.Contains("=")) {
                             var KeyValPair = line.Split('=');
@@ -51,12 +51,14 @@ namespace ZulipAPI {
             ZulipAuth = new ZulipAuthentication(Username, UserSecret);
         }
 
-        private bool ZulipRCIsValid(StreamReader sr) {
-            string fullZulipRC = sr.ReadToEnd();
-            if (fullZulipRC.Contains("email=") && fullZulipRC.Contains("key=") && fullZulipRC.Contains("site=")) {
-                return true;
-            } else {
-                return false;
+        private bool ZulipRCIsValid(string ZulipRCPath) {
+            using (StreamReader sr = new StreamReader(ZulipRCPath)) {
+                string fullZulipRC = sr.ReadToEnd();
+                if (fullZulipRC.Contains("email=") && fullZulipRC.Contains("key=") && fullZulipRC.Contains("site=")) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
     }
