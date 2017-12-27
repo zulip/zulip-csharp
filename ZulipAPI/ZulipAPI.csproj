@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RootNamespace>ZulipNetCore</RootNamespace>
+    <RootNamespace>ZulipAPI</RootNamespace>
     <StartupObject />
     <ApplicationIcon>zulip-csharp_logo.ico</ApplicationIcon>
   </PropertyGroup>

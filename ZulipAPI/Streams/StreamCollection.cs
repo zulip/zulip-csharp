@@ -1,23 +1,26 @@
 using System.Collections;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
-    public class MessageCollection : CollectionBase, IEnumerable, IEnumerator {
+    public class StreamCollection : CollectionBase, IEnumerable, IEnumerator {
 
         private int index = -1;
 
-        public MessageCollection() {
+        public StreamCollection() {
             this.index = -1;
         }
 
-        public void Add(Message message) {
-            if (message != null) {
-                this.List.Add(message);
+        public void Add(Stream stream) {
+            if (stream != null) {
+                this.List.Add(stream);
             }
         }
 
-        public void Remove(Message message) {
-            this.List.Remove(message);
+        public void Remove(Stream stream) {
+            this.List.Remove(stream);
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
@@ -38,5 +41,6 @@ namespace ZulipNetCore {
         public void Reset() {
             this.index = -1;
         }
+
     }
 }

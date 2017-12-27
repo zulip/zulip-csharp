@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using ZulipNetCore;
+using ZulipAPI;
 
 namespace SampleApp.UserControls {
     public partial class UCMessages : UserControl {

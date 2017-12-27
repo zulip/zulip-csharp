@@ -1,5 +1,5 @@
 using System.Windows.Forms;
-using ZulipNetCore;
+using ZulipAPI;
 
 namespace SampleApp {
     public partial class UCUsers : UserControl {
@@ -16,7 +16,7 @@ namespace SampleApp {
                 dgvUsers.DataSource = users.UserCollection;
                 txtResponse.Text = users.JsonOutput;
             } catch (System.Exception) {
-                
+
             }
         }
     }

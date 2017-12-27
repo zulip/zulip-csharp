@@ -2,7 +2,7 @@ using System.Net.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ZulipNetCore {
+namespace ZulipAPI {
 
     public class Users : EndPointBase {
 
