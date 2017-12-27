@@ -1,3 +1,6 @@
+using System;
+using ZulipNetCore;
+using System.IO;
 using SampleApp.UserControls;
 using System.Windows.Forms;
 
@@ -9,6 +12,7 @@ namespace SampleApp {
             InitializeComponent();
             ToolTipsInit();
             AddHandlers();
+            ZulipRCLogin(AutoLogin:true);
             AddUserControl(new UCMessages());
         }
 
@@ -28,6 +32,7 @@ namespace SampleApp {
             txtZulipServerURL.TextChanged += txtLogin_TextChanged;
             txtUsername.TextChanged += txtLogin_TextChanged;
             txtApiKey.TextChanged += txtLogin_TextChanged;
+            lnkZulipRCAuth.LinkClicked += new LinkLabelLinkClickedEventHandler(lnkZulipRCAuth_LinkClicked);
         }
 
         private void UCUsersToolStripMenuItem_Click(object sender, System.EventArgs e) {
@@ -46,6 +51,44 @@ namespace SampleApp {
             Program.ServerURL = txtZulipServerURL.Text;
             Program.UserEmail = txtUsername.Text;
             Program.UserSecret = txtApiKey.Text;
+        }
+
+        private void ZulipRCLogin(bool AutoLogin = false) {
+            string AppPath = Path.GetDirectoryName(Application.ExecutablePath);
+            string defZulipRCPath = Path.Combine(AppPath, ".zuliprc");
+            string HomePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".zuliprc");
+
+            // .zuliprc is in the same folder as the SampleApp.exe
+            if (File.Exists(defZulipRCPath)) {
+                Program.GetZulipClient(defZulipRCPath);
+            // .zuliprc is in folder %HOMEPATH%
+            } else if (File.Exists(HomePath)) {
+                Program.GetZulipClient(HomePath);
+            // if not found in the above open dialog
+            } else {
+                // only when Autologin is true the OpenFileDialog will show up, which is not desired at application startup
+                if (!AutoLogin) {
+                    var ofd = new OpenFileDialog();
+                    DialogResult result = ofd.ShowDialog();
+                    if (result == DialogResult.OK) {// Test result.
+                        try {
+                            Program.GetZulipClient(ofd.FileName);
+                        } catch (System.Exception ex) {
+                            MessageBox.Show(ex.StackTrace + "\r\n" + ex.Message);
+                        }
+                    }
+                }
+            }
+
+            if (Program.client != null) {
+                txtZulipServerURL.Text = Program.client.Server.ServerBaseURL;
+                txtUsername.Text = Program.client.Authentication.UserEmail;
+                txtApiKey.Text = Program.client.Authentication.UserSecret;
+            }
+        }
+
+        private void lnkZulipRCAuth_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+            ZulipRCLogin();
         }
     }
 }

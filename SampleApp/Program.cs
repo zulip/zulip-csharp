@@ -20,6 +20,10 @@ namespace SampleApp {
             client = new ZulipClient(ZuSrv, ZuAuth);
         }
 
+        public static void GetZulipClient(string ZulipRCPath) {
+            client = new ZulipClient(ZulipRCPath);
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
