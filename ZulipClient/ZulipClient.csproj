@@ -44,70 +44,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\NetCore\BaseClasses\EndPointBase.cs">
+    <Compile Include="..\ZulipAPI\BaseClasses\EndPointBase.cs">
       <Link>BaseClasses\EndPointBase.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\BaseClasses\EndPointSendMessage.cs">
+    <Compile Include="..\ZulipAPI\BaseClasses\EndPointSendMessage.cs">
       <Link>BaseClasses\EndPointSendMessage.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Exceptions\InvalidZulipRCFileException.cs">
+    <Compile Include="..\ZulipAPI\Exceptions\InvalidZulipRCFileException.cs">
       <Link>Exceptions\InvalidZulipRCFileException.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Helpers\EndPoints.cs">
+    <Compile Include="..\ZulipAPI\Helpers\EndPoints.cs">
       <Link>Helpers\EndPoints.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Helpers\JSON.cs">
+    <Compile Include="..\ZulipAPI\Helpers\JSON.cs">
       <Link>Helpers\JSON.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Interfaces\IParseResponse.cs">
+    <Compile Include="..\ZulipAPI\Interfaces\IParseResponse.cs">
       <Link>Interfaces\IParseResponse.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Messages\Message.cs">
+    <Compile Include="..\ZulipAPI\Messages\Message.cs">
       <Link>Messages\Message.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Messages\MessageCollection.cs">
+    <Compile Include="..\ZulipAPI\Messages\MessageCollection.cs">
       <Link>Messages\MessageCollection.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Messages\Messages.cs">
+    <Compile Include="..\ZulipAPI\Messages\Messages.cs">
       <Link>Messages\Messages.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Messages\PrivateMessage.cs">
+    <Compile Include="..\ZulipAPI\Messages\PrivateMessage.cs">
       <Link>Messages\PrivateMessage.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Messages\StreamMessage.cs">
+    <Compile Include="..\ZulipAPI\Messages\StreamMessage.cs">
       <Link>Messages\StreamMessage.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Streams\Stream.cs">
+    <Compile Include="..\ZulipAPI\Streams\Stream.cs">
       <Link>Streams\Stream.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Streams\StreamCollection.cs">
+    <Compile Include="..\ZulipAPI\Streams\StreamCollection.cs">
       <Link>Streams\StreamCollection.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Streams\Streams.cs">
+    <Compile Include="..\ZulipAPI\Streams\Streams.cs">
       <Link>Streams\Streams.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Users\BotTypes.cs">
+    <Compile Include="..\ZulipAPI\Users\BotTypes.cs">
       <Link>Users\BotTypes.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Users\User.cs">
+    <Compile Include="..\ZulipAPI\Users\User.cs">
       <Link>Users\User.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Users\UserCollection.cs">
+    <Compile Include="..\ZulipAPI\Users\UserCollection.cs">
       <Link>Users\UserCollection.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\Users\Users.cs">
+    <Compile Include="..\ZulipAPI\Users\Users.cs">
       <Link>Users\Users.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\ZulipAuthentication.cs">
+    <Compile Include="..\ZulipAPI\ZulipAuthentication.cs">
       <Link>ZulipAuthentication.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\ZulipClient.cs">
+    <Compile Include="..\ZulipAPI\ZulipClient.cs">
       <Link>ZulipClient.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\ZulipRCAuth.cs">
+    <Compile Include="..\ZulipAPI\ZulipRCAuth.cs">
       <Link>ZulipRCAuth.cs</Link>
     </Compile>
-    <Compile Include="..\NetCore\ZulipServer.cs">
+    <Compile Include="..\ZulipAPI\ZulipServer.cs">
       <Link>ZulipServer.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
