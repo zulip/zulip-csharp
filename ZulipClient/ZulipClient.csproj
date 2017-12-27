@@ -101,6 +101,9 @@
     <Compile Include="..\NetCore\ZulipClient.cs">
       <Link>ZulipClient.cs</Link>
     </Compile>
+    <Compile Include="..\NetCore\ZulipRCAuth.cs">
+      <Link>ZulipRCAuth.cs</Link>
+    </Compile>
     <Compile Include="..\NetCore\ZulipServer.cs">
       <Link>ZulipServer.cs</Link>
     </Compile>
