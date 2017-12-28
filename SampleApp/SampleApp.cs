@@ -1,3 +1,4 @@
+using System.Windows.Forms.VisualStyles;
 using System;
 using ZulipAPI;
 using System.IO;
@@ -59,16 +60,19 @@ namespace SampleApp {
             string HomePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".zuliprc");
 
             // .zuliprc is in the same folder as the SampleApp.exe
-            if (File.Exists(defZulipRCPath)) {
+            if (File.Exists(defZulipRCPath) && AutoLogin) {
                 Program.GetZulipClient(defZulipRCPath);
             // .zuliprc is in folder %HOMEPATH%
-            } else if (File.Exists(HomePath)) {
+            } else if (File.Exists(HomePath) && AutoLogin) {
                 Program.GetZulipClient(HomePath);
             // if not found in the above open dialog
             } else {
                 // only when Autologin is true the OpenFileDialog will show up, which is not desired at application startup
                 if (!AutoLogin) {
                     var ofd = new OpenFileDialog();
+                    ofd.InitialDirectory = "%userprofile%";
+                    ofd.Filter = "auth files (.zuliprc)|*.zuliprc|All files (*.*)|*.*";
+                    ofd.RestoreDirectory = true;
                     DialogResult result = ofd.ShowDialog();
                     if (result == DialogResult.OK) {// Test result.
                         try {
