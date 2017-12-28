@@ -21,7 +21,9 @@ namespace ZulipAPI {
 
             if (File.Exists(ZulipRCPath)) {
                 var zuliprc = new StreamReader(ZulipRCPath);
+
                 if (ZulipRCIsValid(ZulipRCPath)) {
+
                     while ((line = zuliprc.ReadLine()) != null) {
                         if (line.Contains("=")) {
                             var KeyValPair = line.Split('=');
