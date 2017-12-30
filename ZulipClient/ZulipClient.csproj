@@ -50,6 +50,12 @@
     <Compile Include="..\ZulipAPI\BaseClasses\EndPointSendMessage.cs">
       <Link>BaseClasses\EndPointSendMessage.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\BaseClasses\ResponseBase.cs">
+      <Link>BaseClasses\ResponseBase.cs</Link>
+    </Compile>
+    <Compile Include="..\ZulipAPI\Exceptions\FailedCallException.cs">
+      <Link>Exceptions\FailedCallException.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Exceptions\InvalidZulipRCFileException.cs">
       <Link>Exceptions\InvalidZulipRCFileException.cs</Link>
     </Compile>
@@ -79,6 +85,9 @@
     </Compile>
     <Compile Include="..\ZulipAPI\Messages\PrivateMessage.cs">
       <Link>Messages\PrivateMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\ZulipAPI\Messages\ResponseMessages.cs">
+      <Link>Messages\ResponseMessages.cs</Link>
     </Compile>
     <Compile Include="..\ZulipAPI\Messages\StreamMessage.cs">
       <Link>Messages\StreamMessage.cs</Link>
