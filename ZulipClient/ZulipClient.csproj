@@ -74,6 +74,9 @@
     <Compile Include="..\ZulipAPI\Messages\DisplayRecipient.cs">
       <Link>Messages\DisplayRecipient.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\Messages\EditHistory.cs">
+      <Link>Messages\EditHistory.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Messages\MessageBase.cs">
       <Link>Messages\MessageBase.cs</Link>
     </Compile>
