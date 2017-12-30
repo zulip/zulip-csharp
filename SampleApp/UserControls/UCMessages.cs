@@ -46,7 +46,7 @@ namespace SampleApp.UserControls {
             Program.GetZulipClient();
             Messages msgs = new Messages(Program.client);
             try {
-                await msgs.GetMessagesAsync();
+                await msgs.GetMessagesAsync(99999999999,1000,1);
                 dgvMessages.DataSource = msgs.MessageCollection;
                 txtResponse.Text = msgs.JsonOutput;
             } catch (System.Exception ex) {
