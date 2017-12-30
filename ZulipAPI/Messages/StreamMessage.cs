@@ -1,10 +1,15 @@
 using System.Collections.Generic;
-using System.Net.Http;
-using ZulipAPI.Interfaces;
 
 namespace ZulipAPI {
 
     public class StreamMessage : EndPointSendMessage {
+
+        [Newtonsoft.Json.JsonProperty("display_recipient")]
+        public string DisplayRecipient { get; set; }
+
+        public StreamMessage() {
+
+        }
 
         public StreamMessage(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;
