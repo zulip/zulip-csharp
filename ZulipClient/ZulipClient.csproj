@@ -53,6 +53,9 @@
     <Compile Include="..\ZulipAPI\Exceptions\InvalidZulipRCFileException.cs">
       <Link>Exceptions\InvalidZulipRCFileException.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\Extensions\Extensions.cs">
+      <Link>Extensions\Extensions.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Helpers\EndPoints.cs">
       <Link>Helpers\EndPoints.cs</Link>
     </Compile>
