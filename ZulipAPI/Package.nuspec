@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ZulipAPI</id>
+    <version>0.0.1-alpha</version>
+    <authors>Matthias</authors>
+    <owners>Matthias, Zulip</owners>
+    <title>ZulipAPI</title>
+
+    <summary>ZulipAPI is api for zulip.</summary>
+    <licenseUrl>https://raw.githubusercontent.com/zulip/zulip-csharp/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/zulip/zulip-csharp</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/zulip/zulip-csharp/master/Resources/Logo/zulip-csharp_logo_64x64.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ZulipAPI, a library to connect to a Zulip server via API</description>
+    <releaseNotes>In Devlopment, bleeding edge on Zulip API</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>zulip zulipapi zulipclient api</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="10.0.3" />
+    </dependencies>
+  </metadata>
+</package>
