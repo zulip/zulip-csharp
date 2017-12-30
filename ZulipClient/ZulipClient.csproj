@@ -62,8 +62,8 @@
     <Compile Include="..\ZulipAPI\Interfaces\IParseResponse.cs">
       <Link>Interfaces\IParseResponse.cs</Link>
     </Compile>
-    <Compile Include="..\ZulipAPI\Messages\Message.cs">
-      <Link>Messages\Message.cs</Link>
+    <Compile Include="..\ZulipAPI\Messages\MessageBase.cs">
+      <Link>Messages\MessageBase.cs</Link>
     </Compile>
     <Compile Include="..\ZulipAPI\Messages\MessageCollection.cs">
       <Link>Messages\MessageCollection.cs</Link>
