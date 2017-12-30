@@ -9,6 +9,7 @@ namespace ZulipAPI {
         public PrivateMessage Private { get; set; }
         public StreamMessage Stream { get; set; }
         public MessageCollection MessageCollection { get; private set; }
+        public ResponseMessages Response { get; private set; }
 
         public Messages(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;
@@ -48,23 +49,27 @@ namespace ZulipAPI {
         }
 
         protected override void ParseResponse() {
-            dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
-            ResponseResult = JObj.result;
-            ResponseMessage = JObj.msg;
-            ResponseArray = JObj.messages;
+            object JObj = JSONHelper.ParseJSON(JsonOutput);
+            Response = JSONHelper.ParseJObject<ResponseMessages>(JObj);
 
-            List<object> lst = JSONHelper.ParseJArray<object>(ResponseArray);
+            if (Response.Result == "success") {
+                List<object> lst = JSONHelper.ParseJArray<object>(Response.Messages);
 
-            MessageCollection = new MessageCollection();
-            foreach (dynamic msg in lst) {
-                if (msg.type == "stream") {
-                    var sm = JSONHelper.ParseJObject<StreamMessage>(msg);
-                    MessageCollection.Add(sm);
-                } else if (msg.type == "private") {
-                    var pm = JSONHelper.ParseJObject<PrivateMessage>(msg);
-                    MessageCollection.Add(pm);
+                MessageCollection = new MessageCollection();
+                foreach (dynamic msg in lst) {
+                    if (msg.type == "stream") {
+                        var sm = JSONHelper.ParseJObject<StreamMessage>(msg);
+                        MessageCollection.Add(sm);
+                    } else if (msg.type == "private") {
+                        var pm = JSONHelper.ParseJObject<PrivateMessage>(msg);
+                        MessageCollection.Add(pm);
+                    }
                 }
+            } else {
+                throw new FailedCallException("The API call returned with an error.") { ZulipServerResponse = Response };
             }
+
+            
         }
     }
 }
