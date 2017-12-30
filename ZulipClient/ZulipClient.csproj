@@ -89,6 +89,9 @@
     <Compile Include="..\ZulipAPI\Messages\PrivateMessage.cs">
       <Link>Messages\PrivateMessage.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\Messages\Reaction.cs">
+      <Link>Messages\Reaction.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Messages\ResponseMessages.cs">
       <Link>Messages\ResponseMessages.cs</Link>
     </Compile>
