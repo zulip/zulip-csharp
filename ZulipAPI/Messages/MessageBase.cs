@@ -17,7 +17,7 @@ namespace ZulipAPI {
         [JsonProperty("avatar_url")]
         public string AvartarURL { get; set; }
         [JsonProperty("edit_history")]
-        public object EditHistory { get; set; }
+        public EditHistory[] EditHistory { get; set; }
         [JsonProperty("type")]
         public string Type { get; set; }
 
