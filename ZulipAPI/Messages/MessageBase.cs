@@ -16,6 +16,8 @@ namespace ZulipAPI {
         public string SenderShortName { get; set; }
         [JsonProperty("avatar_url")]
         public string AvartarURL { get; set; }
+        [JsonProperty("edit_history")]
+        public object EditHistory { get; set; }
         [JsonProperty("type")]
         public string Type { get; set; }
 
@@ -29,8 +31,8 @@ namespace ZulipAPI {
         public bool IsMeMessage { get; set; }
         [JsonProperty("sender_full_name")]
         public string SenderFullName { get; set; }
-        //[JsonProperty("reactions")]
-        //public string[] Reactions { get; set; }
+        [JsonProperty("reactions")]
+        public object Reactions { get; set; }
         [JsonProperty("id")]
         public ulong MessageID { get; set; }
         [JsonProperty("subject_links")]
