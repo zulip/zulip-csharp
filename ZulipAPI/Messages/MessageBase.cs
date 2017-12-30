@@ -32,7 +32,7 @@ namespace ZulipAPI {
         [JsonProperty("sender_full_name")]
         public string SenderFullName { get; set; }
         [JsonProperty("reactions")]
-        public object Reactions { get; set; }
+        public Reaction[] Reactions { get; set; }
         [JsonProperty("id")]
         public ulong MessageID { get; set; }
         [JsonProperty("subject_links")]
