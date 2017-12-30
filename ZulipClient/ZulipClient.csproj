@@ -68,6 +68,9 @@
     <Compile Include="..\ZulipAPI\Helpers\JSON.cs">
       <Link>Helpers\JSON.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\Helpers\UnixEpoch.cs">
+      <Link>Helpers\UnixEpoch.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Interfaces\IParseResponse.cs">
       <Link>Interfaces\IParseResponse.cs</Link>
     </Compile>

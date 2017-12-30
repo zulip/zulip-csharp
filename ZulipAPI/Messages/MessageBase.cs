@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 
 namespace ZulipAPI {
@@ -22,7 +23,8 @@ namespace ZulipAPI {
         public string Type { get; set; }
 
         [JsonProperty("timestamp")]
-        public long TimeStamp { get; set; }
+        public long TimeStampUnix { get; set; }
+        public DateTime TimeStamp { get { return UnixEpoch.Epoch.AddSeconds(TimeStampUnix);  } }
         [JsonProperty("sender_realm_str")]
         public string SenderRealmStr { get; set; }
         [JsonProperty("recipient_id")]
