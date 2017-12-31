@@ -101,6 +101,9 @@
     <Compile Include="..\ZulipAPI\Messages\StreamMessage.cs">
       <Link>Messages\StreamMessage.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\Streams\ResponseStreams.cs">
+      <Link>Streams\ResponseStreams.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Streams\Stream.cs">
       <Link>Streams\Stream.cs</Link>
     </Compile>
