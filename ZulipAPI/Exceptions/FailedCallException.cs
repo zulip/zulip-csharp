@@ -7,7 +7,7 @@ namespace ZulipAPI
     internal class FailedCallException : Exception
     {
 
-        public ResponseMessages ZulipServerResponse { get; set; }
+        public ResponseBase ZulipServerResponse { get; set; }
 
         public FailedCallException() {
         }
