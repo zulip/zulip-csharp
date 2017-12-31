@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Collections.Generic;
 
 namespace ZulipAPI {
 
@@ -27,10 +28,23 @@ namespace ZulipAPI {
             using (HttpContent content = Response.Content) {
                 JsonOutput = string.Copy(await content.ReadAsStringAsync());
             }
-            ParseResponse();
+            ParseResponseGet();
         }
 
-        abstract protected void ParseResponse();
+        protected virtual async Task PostJsonAsStringAsync(string EndPointPath, List<KeyValuePair<string, string>> FormData) {
+            string TargetURL = $"{_ZulipClient.Server.ServerApiURL}/{EndPointPath}";
+            var request = new HttpRequestMessage(HttpMethod.Post, TargetURL);
+            request.Content = new FormUrlEncodedContent(FormData);
+
+            using (HttpResponseMessage Response = await _HttpClient.SendAsync(request))
+            using (HttpContent content = Response.Content) {
+                JsonOutput = string.Copy(await content.ReadAsStringAsync());
+            }
+            ParseResponsePost();
+        }
+
+        abstract protected void ParseResponseGet();
+        abstract protected void ParseResponsePost();
 
     }
 }

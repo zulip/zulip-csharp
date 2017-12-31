@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ZulipAPI {
 
@@ -16,7 +17,7 @@ namespace ZulipAPI {
             _HttpClient = ZulipClient.Login();
         }
 
-        public async void PostPrivateMessage(string RecipientEmail, string MessageText) {
+        public async Task PostPrivateMessage(string RecipientEmail, string MessageText) {
             var FormData = new List<KeyValuePair<string, string>>() {
                 new KeyValuePair<string, string>("type", "private"),
                 new KeyValuePair<string, string>("to", RecipientEmail),

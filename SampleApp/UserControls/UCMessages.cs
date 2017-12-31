@@ -23,28 +23,28 @@ namespace SampleApp.UserControls {
             e.Cancel = true;
         }
 
-        private void BtnSendToStream_Click(object sender, EventArgs e) {
+        private async void BtnSendToStream_Click(object sender, EventArgs e) {
             if (cboStreams.SelectedValue != null && txtStreamMsg.Text != "" && txtStreamTopic.Text != "") {
-                try {
                     var sm = new StreamMessage(Program.client);
-                    sm.PostStreamMessage(cboStreams.SelectedValue.ToString(), txtStreamTopic.Text, txtStreamMsg.Text);
-                    lblStreamResponse.Text = $"{sm.ResponseResult}: id {sm.ResponseID}";
+                try {
+                    await sm.PostStreamMessage(cboStreams.SelectedValue.ToString(), txtStreamTopic.Text, txtStreamMsg.Text);
+                    lblStreamResponse.Text = $"{sm.Response.Result}: id {sm.Response.ID}";
                 } catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
 
-        private void BtnSendToPrivate_Click(object sender, EventArgs e) {
+        private async void BtnSendToPrivate_Click(object sender, EventArgs e) {
             if (cboUsers.SelectedValue != null && txtPrivateMsg.Text != "") {
-                try {
                     var pm = new PrivateMessage(Program.client);
-                    pm.PostPrivateMessage(cboUsers.SelectedValue.ToString(), txtPrivateMsg.Text);
-                    lblPMResponse.Text = $"{pm.ResponseResult}: id {pm.ResponseID}";
+                try {
+                    await pm.PostPrivateMessage(cboUsers.SelectedValue.ToString(), txtPrivateMsg.Text);
+                    lblPMResponse.Text = $"{pm.Response.Result}: id {pm.Response.ID}";
                 } catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.ToString());
                 }
-            }
+            } else { return; }
         }
 
         private async void btnGet_Click(object sender, System.EventArgs e) {
@@ -55,7 +55,7 @@ namespace SampleApp.UserControls {
                 dgvMessages.DataSource = msgs.MessageCollection;
                 txtResponse.Text = msgs.JsonOutput;
             } catch (System.Exception ex) {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
             }
         }
 

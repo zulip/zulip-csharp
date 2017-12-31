@@ -48,6 +48,10 @@ namespace SampleApp {
             AddUserControl(new UCMessages());
         }
 
+        private void userAdminToolStripMenuItem_Click(object sender, EventArgs e) {
+            AddUserControl(new UCUserAdmin());
+        }
+
         private void txtLogin_TextChanged(object sender, System.EventArgs e) {
             Program.ServerURL = txtZulipServerURL.Text;
             Program.UserEmail = txtUsername.Text;
@@ -94,5 +98,6 @@ namespace SampleApp {
         private void lnkZulipRCAuth_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
             ZulipRCLogin();
         }
+
     }
 }

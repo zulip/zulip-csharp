@@ -31,6 +31,7 @@ namespace SampleApp {
             this.messagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panel_Login = new System.Windows.Forms.Panel();
+            this.lnkZulipRCAuth = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,7 +39,7 @@ namespace SampleApp {
             this.label2 = new System.Windows.Forms.Label();
             this.txtZulipServerURL = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lnkZulipRCAuth = new System.Windows.Forms.LinkLabel();
+            this.userAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel_Login.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +59,8 @@ namespace SampleApp {
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testConnectionToolStripMenuItem,
             this.streamsToolStripMenuItem,
-            this.messagesToolStripMenuItem});
+            this.messagesToolStripMenuItem,
+            this.userAdminToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
@@ -66,21 +68,21 @@ namespace SampleApp {
             // testConnectionToolStripMenuItem
             // 
             this.testConnectionToolStripMenuItem.Name = "testConnectionToolStripMenuItem";
-            this.testConnectionToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.testConnectionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.testConnectionToolStripMenuItem.Text = "Users";
             this.testConnectionToolStripMenuItem.Click += new System.EventHandler(this.UCUsersToolStripMenuItem_Click);
             // 
             // streamsToolStripMenuItem
             // 
             this.streamsToolStripMenuItem.Name = "streamsToolStripMenuItem";
-            this.streamsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.streamsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.streamsToolStripMenuItem.Text = "Streams";
             this.streamsToolStripMenuItem.Click += new System.EventHandler(this.streamsToolStripMenuItem_Click);
             // 
             // messagesToolStripMenuItem
             // 
             this.messagesToolStripMenuItem.Name = "messagesToolStripMenuItem";
-            this.messagesToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.messagesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.messagesToolStripMenuItem.Text = "Messages";
             this.messagesToolStripMenuItem.Click += new System.EventHandler(this.messagesToolStripMenuItem_Click);
             // 
@@ -107,6 +109,16 @@ namespace SampleApp {
             this.panel_Login.Name = "panel_Login";
             this.panel_Login.Size = new System.Drawing.Size(811, 61);
             this.panel_Login.TabIndex = 0;
+            // 
+            // lnkZulipRCAuth
+            // 
+            this.lnkZulipRCAuth.AutoSize = true;
+            this.lnkZulipRCAuth.Location = new System.Drawing.Point(348, 40);
+            this.lnkZulipRCAuth.Name = "lnkZulipRCAuth";
+            this.lnkZulipRCAuth.Size = new System.Drawing.Size(149, 13);
+            this.lnkZulipRCAuth.TabIndex = 8;
+            this.lnkZulipRCAuth.TabStop = true;
+            this.lnkZulipRCAuth.Text = "Authentication with .zuliprc file";
             // 
             // label3
             // 
@@ -156,15 +168,12 @@ namespace SampleApp {
             this.txtZulipServerURL.Size = new System.Drawing.Size(174, 20);
             this.txtZulipServerURL.TabIndex = 4;
             // 
-            // lnkZulipRCAuth
+            // userAdminToolStripMenuItem
             // 
-            this.lnkZulipRCAuth.AutoSize = true;
-            this.lnkZulipRCAuth.Location = new System.Drawing.Point(348, 40);
-            this.lnkZulipRCAuth.Name = "lnkZulipRCAuth";
-            this.lnkZulipRCAuth.Size = new System.Drawing.Size(149, 13);
-            this.lnkZulipRCAuth.TabIndex = 8;
-            this.lnkZulipRCAuth.TabStop = true;
-            this.lnkZulipRCAuth.Text = "Authentication with .zuliprc file";
+            this.userAdminToolStripMenuItem.Name = "userAdminToolStripMenuItem";
+            this.userAdminToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userAdminToolStripMenuItem.Text = "User Admin";
+            this.userAdminToolStripMenuItem.Click += new System.EventHandler(this.userAdminToolStripMenuItem_Click);
             // 
             // SampleApp
             // 
@@ -203,6 +212,7 @@ namespace SampleApp {
         private System.Windows.Forms.TextBox txtZulipServerURL;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.LinkLabel lnkZulipRCAuth;
+        private System.Windows.Forms.ToolStripMenuItem userAdminToolStripMenuItem;
     }
 }
 

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ZulipAPI {
@@ -16,7 +18,28 @@ namespace ZulipAPI {
             await GetJsonAsStringAsync(EndPointPath.Users);
         }
 
-        protected override void ParseResponse() {
+        public async Task CreateUserAsync(string UserEmail, string FullName, string Password, string ShortName) {
+            var FormData = new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>("email", UserEmail),
+                new KeyValuePair<string, string>("password", Password),
+                new KeyValuePair<string, string>("full_name", FullName),
+                new KeyValuePair<string, string>("short_name", ShortName)
+            };
+            await PostJsonAsStringAsync(EndPointPath.Users, FormData);
+        }
+
+        protected override void ParseResponsePost() {
+            dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
+            Response = JSONHelper.ParseJObject<ResponseUsers>(JObj);
+
+            if (Response.Result == "success") {
+
+            } else {
+                throw new FailedCallException(Response);
+            }
+        }
+
+        protected override void ParseResponseGet() {
             dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
             Response = JSONHelper.ParseJObject<ResponseUsers>(JObj);
 
@@ -29,7 +52,7 @@ namespace ZulipAPI {
                     }
                 }
             } else {
-                throw new FailedCallException("The API call returned with an error.") { ZulipServerResponse = Response };
+                throw new FailedCallException(Response);
             }
         }
     }

@@ -16,7 +16,7 @@ namespace ZulipAPI {
             await GetJsonAsStringAsync(EndPointPath.Streams);
         }
 
-        protected override void ParseResponse() {
+        protected override void ParseResponseGet() {
             dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
             Response = JSONHelper.ParseJObject<ResponseStreams>(JObj);
 
@@ -29,7 +29,18 @@ namespace ZulipAPI {
                     }
                 }
             } else {
-                throw new FailedCallException("The API call returned with an error.") { ZulipServerResponse = Response };
+                throw new FailedCallException(Response);
+            }
+        }
+
+        protected override void ParseResponsePost() {
+            dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
+            Response = JSONHelper.ParseJObject<ResponseStreams>(JObj);
+
+            if (Response.Result == "success") {
+                
+            } else {
+                throw new FailedCallException(Response);
             }
         }
     }

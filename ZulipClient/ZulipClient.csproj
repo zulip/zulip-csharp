@@ -98,6 +98,9 @@
     <Compile Include="..\ZulipAPI\Messages\ResponseMessages.cs">
       <Link>Messages\ResponseMessages.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\Messages\ResponseSentMessage.cs">
+      <Link>Messages\ResponseSentMessage.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Messages\StreamMessage.cs">
       <Link>Messages\StreamMessage.cs</Link>
     </Compile>
