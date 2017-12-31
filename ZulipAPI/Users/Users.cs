@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ZulipAPI {
@@ -16,7 +18,18 @@ namespace ZulipAPI {
             await GetJsonAsStringAsync(EndPointPath.Users);
         }
 
-        protected override void ParseResponse() {
+        protected override void ParseResponsePost() {
+            dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
+            Response = JSONHelper.ParseJObject<ResponseUsers>(JObj);
+
+            if (Response.Result == "success") {
+
+            } else {
+                throw new FailedCallException(Response);
+            }
+        }
+
+        protected override void ParseResponseGet() {
             dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
             Response = JSONHelper.ParseJObject<ResponseUsers>(JObj);
 
