@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ZulipAPI {
 
@@ -16,7 +17,7 @@ namespace ZulipAPI {
             _HttpClient = ZulipClient.Login();
         }
 
-        public async void PostStreamMessage(string StreamName, string Topic, string MessageText) {
+        public async Task PostStreamMessage(string StreamName, string Topic, string MessageText) {
             var FormData = new List<KeyValuePair<string, string>>() {
                 new KeyValuePair<string, string>("type", "stream"),
                 new KeyValuePair<string, string>("to", StreamName),
