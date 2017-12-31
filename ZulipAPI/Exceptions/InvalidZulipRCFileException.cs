@@ -1,6 +1,8 @@
 using System;
 
 namespace ZulipAPI {
+
+    [Serializable]
     internal class InvalidZulipRCFileException : Exception {
 
         public InvalidZulipRCFileException() : base() {

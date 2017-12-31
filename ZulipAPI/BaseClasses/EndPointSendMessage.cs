@@ -6,24 +6,15 @@ using System.Threading.Tasks;
 
 namespace ZulipAPI {
 
-    public abstract class EndPointSendMessage {
+    public abstract class EndPointSendMessage : MessageBase {
 
         protected static HttpClient _HttpClient;
         protected static ZulipClient _ZulipClient;
         public string JsonOutput;
         public bool StatusCode;
-        virtual public string ResponseMessage { get; protected set; }
-        virtual public string ResponseResult { get; protected set; }
-        virtual public string ResponseID { get; protected set; }
-
-        public EndPointSendMessage() {
-
-        }
-
-        public EndPointSendMessage(ZulipClient ZulipClient) {
-            _ZulipClient = ZulipClient;
-            _HttpClient = ZulipClient.Login();
-        }
+        public string ResponseMessage;
+        public string ResponseResult;
+        public string ResponseID;
 
         protected virtual async Task GetJsonAsStringAsync(List<KeyValuePair<string, string>> FormData) {
             string TargetURL = $"{_ZulipClient.Server.ServerApiURL}/{EndPointPath.Messages}";

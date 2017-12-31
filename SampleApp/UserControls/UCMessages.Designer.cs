@@ -36,13 +36,17 @@ namespace SampleApp.UserControls {
             this.panel_Send = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblStreamResponse = new System.Windows.Forms.Label();
+            this.txtStreamTopic = new System.Windows.Forms.TextBox();
             this.btnSendToStream = new System.Windows.Forms.Button();
             this.cboStreams = new System.Windows.Forms.ComboBox();
             this.txtStreamMsg = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel_PMSend = new System.Windows.Forms.Panel();
+            this.lblPMResponse = new System.Windows.Forms.Label();
             this.lnkFillCombos = new System.Windows.Forms.LinkLabel();
             this.btnSendToPrivate = new System.Windows.Forms.Button();
             this.cboUsers = new System.Windows.Forms.ComboBox();
@@ -50,10 +54,12 @@ namespace SampleApp.UserControls {
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtStreamTopic = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblStreamResponse = new System.Windows.Forms.Label();
-            this.lblPMResponse = new System.Windows.Forms.Label();
+            this.numAnchor = new System.Windows.Forms.NumericUpDown();
+            this.numBefore = new System.Windows.Forms.NumericUpDown();
+            this.numAfter = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMessages)).BeginInit();
             this.panel1.SuspendLayout();
@@ -62,6 +68,9 @@ namespace SampleApp.UserControls {
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel_PMSend.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAnchor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBefore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAfter)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -116,6 +125,12 @@ namespace SampleApp.UserControls {
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.numBefore);
+            this.panel2.Controls.Add(this.numAfter);
+            this.panel2.Controls.Add(this.numAnchor);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.btnGet);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -135,9 +150,9 @@ namespace SampleApp.UserControls {
             // 
             // btnGet
             // 
-            this.btnGet.Location = new System.Drawing.Point(92, 15);
+            this.btnGet.Location = new System.Drawing.Point(82, 28);
             this.btnGet.Name = "btnGet";
-            this.btnGet.Size = new System.Drawing.Size(109, 23);
+            this.btnGet.Size = new System.Drawing.Size(89, 23);
             this.btnGet.TabIndex = 2;
             this.btnGet.Text = "Get Messages";
             this.btnGet.UseVisualStyleBackColor = true;
@@ -183,6 +198,22 @@ namespace SampleApp.UserControls {
             this.panel3.Size = new System.Drawing.Size(496, 172);
             this.panel3.TabIndex = 1;
             // 
+            // lblStreamResponse
+            // 
+            this.lblStreamResponse.AutoSize = true;
+            this.lblStreamResponse.Location = new System.Drawing.Point(98, 152);
+            this.lblStreamResponse.Name = "lblStreamResponse";
+            this.lblStreamResponse.Size = new System.Drawing.Size(35, 13);
+            this.lblStreamResponse.TabIndex = 6;
+            this.lblStreamResponse.Text = "label9";
+            // 
+            // txtStreamTopic
+            // 
+            this.txtStreamTopic.Location = new System.Drawing.Point(245, 34);
+            this.txtStreamTopic.Name = "txtStreamTopic";
+            this.txtStreamTopic.Size = new System.Drawing.Size(129, 20);
+            this.txtStreamTopic.TabIndex = 5;
+            // 
             // btnSendToStream
             // 
             this.btnSendToStream.Location = new System.Drawing.Point(391, 32);
@@ -217,6 +248,15 @@ namespace SampleApp.UserControls {
             this.label5.TabIndex = 0;
             this.label5.Text = "Message Text";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(242, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Topic";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -250,6 +290,15 @@ namespace SampleApp.UserControls {
             this.panel_PMSend.Name = "panel_PMSend";
             this.panel_PMSend.Size = new System.Drawing.Size(496, 172);
             this.panel_PMSend.TabIndex = 0;
+            // 
+            // lblPMResponse
+            // 
+            this.lblPMResponse.AutoSize = true;
+            this.lblPMResponse.Location = new System.Drawing.Point(98, 152);
+            this.lblPMResponse.Name = "lblPMResponse";
+            this.lblPMResponse.Size = new System.Drawing.Size(35, 13);
+            this.lblPMResponse.TabIndex = 6;
+            this.lblPMResponse.Text = "label9";
             // 
             // lnkFillCombos
             // 
@@ -313,39 +362,83 @@ namespace SampleApp.UserControls {
             this.label1.TabIndex = 0;
             this.label1.Text = "Private Message";
             // 
-            // txtStreamTopic
+            // numAnchor
             // 
-            this.txtStreamTopic.Location = new System.Drawing.Point(245, 34);
-            this.txtStreamTopic.Name = "txtStreamTopic";
-            this.txtStreamTopic.Size = new System.Drawing.Size(129, 20);
-            this.txtStreamTopic.TabIndex = 5;
+            this.numAnchor.Location = new System.Drawing.Point(95, 3);
+            this.numAnchor.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numAnchor.Name = "numAnchor";
+            this.numAnchor.Size = new System.Drawing.Size(76, 20);
+            this.numAnchor.TabIndex = 3;
+            this.numAnchor.Value = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
             // 
-            // label8
+            // numBefore
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(242, 18);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Topic";
+            this.numBefore.Location = new System.Drawing.Point(230, 3);
+            this.numBefore.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numBefore.Name = "numBefore";
+            this.numBefore.Size = new System.Drawing.Size(62, 20);
+            this.numBefore.TabIndex = 3;
+            this.numBefore.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             // 
-            // lblStreamResponse
+            // numAfter
             // 
-            this.lblStreamResponse.AutoSize = true;
-            this.lblStreamResponse.Location = new System.Drawing.Point(98, 152);
-            this.lblStreamResponse.Name = "lblStreamResponse";
-            this.lblStreamResponse.Size = new System.Drawing.Size(35, 13);
-            this.lblStreamResponse.TabIndex = 6;
-            this.lblStreamResponse.Text = "label9";
+            this.numAfter.Location = new System.Drawing.Point(230, 29);
+            this.numAfter.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numAfter.Name = "numAfter";
+            this.numAfter.Size = new System.Drawing.Size(62, 20);
+            this.numAfter.TabIndex = 3;
+            this.numAfter.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // lblPMResponse
+            // label9
             // 
-            this.lblPMResponse.AutoSize = true;
-            this.lblPMResponse.Location = new System.Drawing.Point(98, 152);
-            this.lblPMResponse.Name = "lblPMResponse";
-            this.lblPMResponse.Size = new System.Drawing.Size(35, 13);
-            this.lblPMResponse.TabIndex = 6;
-            this.lblPMResponse.Text = "label9";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(48, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Anchor";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(186, 5);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Before";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(186, 31);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "After";
             // 
             // UCMessages
             // 
@@ -367,6 +460,9 @@ namespace SampleApp.UserControls {
             this.panel3.PerformLayout();
             this.panel_PMSend.ResumeLayout(false);
             this.panel_PMSend.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numAnchor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBefore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAfter)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -403,5 +499,11 @@ namespace SampleApp.UserControls {
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblStreamResponse;
         private System.Windows.Forms.Label lblPMResponse;
+        private System.Windows.Forms.NumericUpDown numAnchor;
+        private System.Windows.Forms.NumericUpDown numBefore;
+        private System.Windows.Forms.NumericUpDown numAfter;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
     }
 }

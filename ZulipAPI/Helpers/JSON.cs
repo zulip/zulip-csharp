@@ -16,6 +16,11 @@ namespace ZulipAPI {
             return JsonConvert.DeserializeObject<List<T>>(JArr.ToString());
         }
 
+        public static T ParseJObject<T>(object JSONObject) {
+            JObject JObj = (JObject)JSONObject;
+            return JsonConvert.DeserializeObject<T>(JObj.ToString());
+        }
+
 
     }
 }
