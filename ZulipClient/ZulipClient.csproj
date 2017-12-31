@@ -50,8 +50,17 @@
     <Compile Include="..\ZulipAPI\BaseClasses\EndPointSendMessage.cs">
       <Link>BaseClasses\EndPointSendMessage.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\BaseClasses\ResponseBase.cs">
+      <Link>BaseClasses\ResponseBase.cs</Link>
+    </Compile>
+    <Compile Include="..\ZulipAPI\Exceptions\FailedCallException.cs">
+      <Link>Exceptions\FailedCallException.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Exceptions\InvalidZulipRCFileException.cs">
       <Link>Exceptions\InvalidZulipRCFileException.cs</Link>
+    </Compile>
+    <Compile Include="..\ZulipAPI\Extensions\Extensions.cs">
+      <Link>Extensions\Extensions.cs</Link>
     </Compile>
     <Compile Include="..\ZulipAPI\Helpers\EndPoints.cs">
       <Link>Helpers\EndPoints.cs</Link>
@@ -59,11 +68,20 @@
     <Compile Include="..\ZulipAPI\Helpers\JSON.cs">
       <Link>Helpers\JSON.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\Helpers\UnixEpoch.cs">
+      <Link>Helpers\UnixEpoch.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Interfaces\IParseResponse.cs">
       <Link>Interfaces\IParseResponse.cs</Link>
     </Compile>
-    <Compile Include="..\ZulipAPI\Messages\Message.cs">
-      <Link>Messages\Message.cs</Link>
+    <Compile Include="..\ZulipAPI\Messages\DisplayRecipient.cs">
+      <Link>Messages\DisplayRecipient.cs</Link>
+    </Compile>
+    <Compile Include="..\ZulipAPI\Messages\EditHistory.cs">
+      <Link>Messages\EditHistory.cs</Link>
+    </Compile>
+    <Compile Include="..\ZulipAPI\Messages\MessageBase.cs">
+      <Link>Messages\MessageBase.cs</Link>
     </Compile>
     <Compile Include="..\ZulipAPI\Messages\MessageCollection.cs">
       <Link>Messages\MessageCollection.cs</Link>
@@ -73,6 +91,12 @@
     </Compile>
     <Compile Include="..\ZulipAPI\Messages\PrivateMessage.cs">
       <Link>Messages\PrivateMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\ZulipAPI\Messages\Reaction.cs">
+      <Link>Messages\Reaction.cs</Link>
+    </Compile>
+    <Compile Include="..\ZulipAPI\Messages\ResponseMessages.cs">
+      <Link>Messages\ResponseMessages.cs</Link>
     </Compile>
     <Compile Include="..\ZulipAPI\Messages\StreamMessage.cs">
       <Link>Messages\StreamMessage.cs</Link>

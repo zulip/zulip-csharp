@@ -1,12 +1,15 @@
-using ZulipAPI.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 
 namespace ZulipAPI {
 
     public class PrivateMessage : EndPointSendMessage {
+
+        [Newtonsoft.Json.JsonProperty("display_recipient")]
+        public Recipient[] DisplayRecipient { get; set; }
+
+        public PrivateMessage() {
+
+        }
 
         public PrivateMessage(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;

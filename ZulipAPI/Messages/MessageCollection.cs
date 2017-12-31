@@ -10,13 +10,13 @@ namespace ZulipAPI {
             this.index = -1;
         }
 
-        public void Add(Message message) {
+        public void Add(MessageBase message) {
             if (message != null) {
                 this.List.Add(message);
             }
         }
 
-        public void Remove(Message message) {
+        public void Remove(MessageBase message) {
             this.List.Remove(message);
         }
 

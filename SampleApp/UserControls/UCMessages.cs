@@ -16,6 +16,11 @@ namespace SampleApp.UserControls {
             lnkFillCombos.LinkClicked += new LinkLabelLinkClickedEventHandler(lnkFillCombos_LinkClicked);
             btnSendToPrivate.Click += BtnSendToPrivate_Click;
             btnSendToStream.Click += BtnSendToStream_Click;
+            dgvMessages.DataError += DgvMessages_DataError;
+        }
+
+        private void DgvMessages_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+            e.Cancel = true;
         }
 
         private void BtnSendToStream_Click(object sender, EventArgs e) {
@@ -46,7 +51,7 @@ namespace SampleApp.UserControls {
             Program.GetZulipClient();
             Messages msgs = new Messages(Program.client);
             try {
-                await msgs.GetMessagesAsync();
+                await msgs.GetMessagesAsync((long)numAnchor.Value, (long)numBefore.Value, (long)numAfter.Value);
                 dgvMessages.DataSource = msgs.MessageCollection;
                 txtResponse.Text = msgs.JsonOutput;
             } catch (System.Exception ex) {
@@ -60,6 +65,10 @@ namespace SampleApp.UserControls {
             txtStreamTopic.Text = "API Test";
             lblPMResponse.Text = "";
             lblStreamResponse.Text = "";
+
+            toolTip1.SetToolTip(this.numAnchor, "Is the message id from which you want to get x messages before and y messages after.\r\nIf you set Anchor really high (by default) it will automatically use the highest message id available; the most recent one.");
+            toolTip1.SetToolTip(this.numBefore, "Number of messages to be retrieve before the anchor message.\r\nIf Anchor is beyond the most recent message, this will retrieve that number of messages.\r\nAfter will have no effect");
+            toolTip1.SetToolTip(this.numAfter, "Only useful if you set Anchor to an actcual message id and then get messages after that point,\r\nie. going back to an old topic's first message, then using this to get messages after that.");
         }
 
         private async void lnkFillCombos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
