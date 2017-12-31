@@ -66,7 +66,7 @@ namespace ZulipAPI {
                     }
                 }
             } else {
-                throw new FailedCallException("The API call returned with an error.") { ZulipServerResponse = Response };
+                throw new FailedCallException(Response);
             }
         }
     }
