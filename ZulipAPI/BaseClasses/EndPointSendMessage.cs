@@ -12,6 +12,7 @@ namespace ZulipAPI {
         protected static ZulipClient _ZulipClient;
         public string JsonOutput;
         public bool StatusCode;
+        public ResponseSentMessage Response { get; private set; }
         public string ResponseMessage;
         public string ResponseResult;
         public string ResponseID;
@@ -30,10 +31,13 @@ namespace ZulipAPI {
 
         protected virtual void ParseResponse() {
             dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
-            ResponseMessage = JObj.msg;
-            ResponseResult = JObj.result;
-            ResponseID = JObj.id;
-        }
+            Response = JSONHelper.ParseJObject<ResponseSentMessage>(JObj);
 
+            if (Response.Result == "success") {
+
+            } else {
+                throw new FailedCallException("The API call returned with an error.") { ZulipServerResponse = Response };
+            }
+        }
     }
 }
