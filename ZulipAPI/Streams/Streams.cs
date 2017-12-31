@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ZulipAPI {
@@ -7,7 +5,8 @@ namespace ZulipAPI {
     public class Streams : EndPointBase {
 
         public StreamCollection StreamCollection { get; private set; }
-
+        public ResponseStreams Response { get; private set; }
+        
         public Streams(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;
             _HttpClient = ZulipClient.Login();
@@ -19,16 +18,18 @@ namespace ZulipAPI {
 
         protected override void ParseResponse() {
             dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
-            ResponseMessage = JObj.msg;
-            ResponseResult = JObj.result;
-            ResponseArray = JObj.streams;
+            Response = JSONHelper.ParseJObject<ResponseStreams>(JObj);
 
-            StreamCollection = new StreamCollection();
-            var result = JSONHelper.ParseJArray<Stream>(ResponseArray);
-            if (result != null) {
-                foreach (var stream in result) {
-                    this.StreamCollection.Add(stream);
+            if (Response.Result == "success") {
+                StreamCollection = new StreamCollection();
+                var result = JSONHelper.ParseJArray<Stream>(Response.Streams);
+                if (result != null) {
+                    foreach (var stream in result) {
+                        this.StreamCollection.Add(stream);
+                    }
                 }
+            } else {
+                throw new FailedCallException("The API call returned with an error.") { ZulipServerResponse = Response };
             }
         }
     }
