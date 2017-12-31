@@ -7,6 +7,7 @@ namespace ZulipAPI {
     public class Users : EndPointBase {
 
         public UserCollection UserCollection { get; set; }
+        public ResponseUsers Response { get; set; }
 
         public Users(ZulipClient ZulipClient) {
             _ZulipClient = ZulipClient;
@@ -19,16 +20,18 @@ namespace ZulipAPI {
 
         protected override void ParseResponse() {
             dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
-            ResponseMessage = JObj.msg;
-            ResponseResult = JObj.result;
-            ResponseArray = JObj.members;
+            Response = JSONHelper.ParseJObject<ResponseUsers>(JObj);
 
-            UserCollection = new UserCollection();
-            var result = JSONHelper.ParseJArray<User>(ResponseArray);
-            if (result != null) {
-                foreach (var user in result) {
-                    this.UserCollection.Add(user);
+            if (Response.Result == "success") {
+                UserCollection = new UserCollection();
+                var result = JSONHelper.ParseJArray<User>(Response.Members);
+                if (result != null) {
+                    foreach (var user in result) {
+                        this.UserCollection.Add(user);
+                    }
                 }
+            } else {
+                throw new FailedCallException("The API call returned with an error.") { ZulipServerResponse = Response };
             }
         }
     }

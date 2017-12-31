@@ -113,6 +113,9 @@
     <Compile Include="..\ZulipAPI\Users\BotTypes.cs">
       <Link>Users\BotTypes.cs</Link>
     </Compile>
+    <Compile Include="..\ZulipAPI\Users\ResponseUsers.cs">
+      <Link>Users\ResponseUsers.cs</Link>
+    </Compile>
     <Compile Include="..\ZulipAPI\Users\User.cs">
       <Link>Users\User.cs</Link>
     </Compile>
