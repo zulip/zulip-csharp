@@ -18,6 +18,16 @@ namespace ZulipAPI {
             await GetJsonAsStringAsync(EndPointPath.Users);
         }
 
+        public async Task CreateUserAsync(string UserEmail, string FullName, string Password, string ShortName) {
+            var FormData = new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>("email", UserEmail),
+                new KeyValuePair<string, string>("password", Password),
+                new KeyValuePair<string, string>("full_name", FullName),
+                new KeyValuePair<string, string>("short_name", ShortName)
+            };
+            await PostJsonAsStringAsync(EndPointPath.Users, FormData);
+        }
+
         protected override void ParseResponsePost() {
             dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
             Response = JSONHelper.ParseJObject<ResponseUsers>(JObj);

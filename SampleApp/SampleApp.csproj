@@ -76,6 +76,12 @@
     <Compile Include="UserControls\UCUsers.Designer.cs">
       <DependentUpon>UCUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCUserAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCUserAdmin.Designer.cs">
+      <DependentUpon>UCUserAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewHelpers\DataGridViewHelper.cs" />
     <EmbeddedResource Include="SampleApp.resx">
       <DependentUpon>SampleApp.cs</DependentUpon>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCUsers.resx">
       <DependentUpon>UCUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCUserAdmin.resx">
+      <DependentUpon>UCUserAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
