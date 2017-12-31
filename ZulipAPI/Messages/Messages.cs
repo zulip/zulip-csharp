@@ -45,10 +45,10 @@ namespace ZulipAPI {
             using (HttpContent content = Response.Content) {
                 JsonOutput = string.Copy(await content.ReadAsStringAsync());
             }
-            ParseResponse();
+            ParseResponseGet();
         }
 
-        protected override void ParseResponse() {
+        protected override void ParseResponseGet() {
             object JObj = JSONHelper.ParseJSON(JsonOutput);
             Response = JSONHelper.ParseJObject<ResponseMessages>(JObj);
 
@@ -65,6 +65,17 @@ namespace ZulipAPI {
                         MessageCollection.Add(pm);
                     }
                 }
+            } else {
+                throw new FailedCallException(Response);
+            }
+        }
+
+        protected override void ParseResponsePost() {
+            object JObj = JSONHelper.ParseJSON(JsonOutput);
+            Response = JSONHelper.ParseJObject<ResponseMessages>(JObj);
+
+            if (Response.Result == "success") {
+                
             } else {
                 throw new FailedCallException(Response);
             }
