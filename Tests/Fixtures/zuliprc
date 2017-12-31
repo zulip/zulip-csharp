@@ -1,0 +1,4 @@
+[api]
+email=bot_email
+key=api_token
+site=http://localhost:9991

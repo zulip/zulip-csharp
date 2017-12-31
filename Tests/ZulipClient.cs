@@ -1,5 +1,6 @@
 using Xunit;
 using System;
+using System.IO;
 using ZulipAPI;
 
 namespace ZulipAPITests.Serverless
@@ -26,8 +27,8 @@ namespace ZulipAPITests.Serverless
         [Fact]
         [Trait("Category", "ClientTests")]
         public void TestZulipRCPath() {
-            Assert.Throws<Exception>(() => {
-                ZulipClient client = new ZulipClient("RCPath");
+            Assert.Throws<FileNotFoundException>(() => {
+                ZulipClient Client = new ZulipClient("Does-Not=Exsist");
             });
         }
 
