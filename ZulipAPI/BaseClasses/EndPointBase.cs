@@ -43,8 +43,21 @@ namespace ZulipAPI {
             ParseResponsePost();
         }
 
+        protected virtual async Task DeleteJsonAsStringAsync(string EndPointPath, List<KeyValuePair<string, string>> FormData) {
+            string TargetURL = $"{_ZulipClient.Server.ServerApiURL}/{EndPointPath}";
+            var request = new HttpRequestMessage(HttpMethod.Delete, TargetURL);
+            request.Content = new FormUrlEncodedContent(FormData);
+
+            using (HttpResponseMessage Response = await _HttpClient.SendAsync(request))
+            using (HttpContent content = Response.Content) {
+                JsonOutput = string.Copy(await content.ReadAsStringAsync());
+            }
+            ParseResponsePost();
+        }
+
         abstract protected void ParseResponseGet();
         abstract protected void ParseResponsePost();
+        abstract protected void ParseResponseDelete();
 
     }
 }

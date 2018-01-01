@@ -28,6 +28,20 @@ namespace ZulipAPI {
             await PostJsonAsStringAsync(EndPointPath.Users, FormData);
         }
 
+        public async Task DeactivateUserAsync(string UserEmail) {
+            var FormData = new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>("email", UserEmail)
+            };
+            await DeleteJsonAsStringAsync(EndPointPath.Users, FormData);
+        }
+
+        public async Task ReactivateUserAsync(string UserEmail) {
+            var FormData = new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>("email", UserEmail)
+            };
+            await PostJsonAsStringAsync(EndPointPath.Users, FormData);
+        }
+
         protected override void ParseResponsePost() {
             dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
             Response = JSONHelper.ParseJObject<ResponseUsers>(JObj);
@@ -51,6 +65,17 @@ namespace ZulipAPI {
                         this.UserCollection.Add(user);
                     }
                 }
+            } else {
+                throw new FailedCallException(Response);
+            }
+        }
+
+        protected override void ParseResponseDelete() {
+            dynamic JObj = JSONHelper.ParseJSON(JsonOutput);
+            Response = JSONHelper.ParseJObject<ResponseUsers>(JObj);
+
+            if (Response.Result == "success") {
+
             } else {
                 throw new FailedCallException(Response);
             }

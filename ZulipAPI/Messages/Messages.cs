@@ -80,5 +80,9 @@ namespace ZulipAPI {
                 throw new FailedCallException(Response);
             }
         }
+
+        protected override void ParseResponseDelete() {
+            throw new System.NotImplementedException();
+        }
     }
 }

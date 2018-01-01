@@ -87,7 +87,7 @@ namespace SampleApp.UserControls {
                 cboStreams.DataSource = streams.StreamCollection;
 
             } catch (System.Exception ex) {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
             }
         }
     }

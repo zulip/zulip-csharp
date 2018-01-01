@@ -32,6 +32,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtShortName = new System.Windows.Forms.TextBox();
             this.btnCreateUser = new System.Windows.Forms.Button();
+            this.lnkGetUsers = new System.Windows.Forms.LinkLabel();
+            this.cboUsers = new System.Windows.Forms.ComboBox();
+            this.chkActive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -100,17 +103,48 @@
             // 
             // btnCreateUser
             // 
-            this.btnCreateUser.Location = new System.Drawing.Point(187, 128);
+            this.btnCreateUser.Location = new System.Drawing.Point(187, 117);
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Size = new System.Drawing.Size(75, 23);
             this.btnCreateUser.TabIndex = 2;
             this.btnCreateUser.Text = "Create User";
             this.btnCreateUser.UseVisualStyleBackColor = true;
             // 
-            // UserAdmin
+            // lnkGetUsers
+            // 
+            this.lnkGetUsers.AutoSize = true;
+            this.lnkGetUsers.Location = new System.Drawing.Point(10, 151);
+            this.lnkGetUsers.Name = "lnkGetUsers";
+            this.lnkGetUsers.Size = new System.Drawing.Size(54, 13);
+            this.lnkGetUsers.TabIndex = 3;
+            this.lnkGetUsers.TabStop = true;
+            this.lnkGetUsers.Text = "Get Users";
+            // 
+            // cboUsers
+            // 
+            this.cboUsers.FormattingEnabled = true;
+            this.cboUsers.Location = new System.Drawing.Point(107, 148);
+            this.cboUsers.Name = "cboUsers";
+            this.cboUsers.Size = new System.Drawing.Size(155, 21);
+            this.cboUsers.TabIndex = 4;
+            // 
+            // chkActive
+            // 
+            this.chkActive.AutoSize = true;
+            this.chkActive.Location = new System.Drawing.Point(268, 150);
+            this.chkActive.Name = "chkActive";
+            this.chkActive.Size = new System.Drawing.Size(55, 17);
+            this.chkActive.TabIndex = 5;
+            this.chkActive.Text = "active";
+            this.chkActive.UseVisualStyleBackColor = true;
+            // 
+            // UCUserAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkActive);
+            this.Controls.Add(this.cboUsers);
+            this.Controls.Add(this.lnkGetUsers);
             this.Controls.Add(this.btnCreateUser);
             this.Controls.Add(this.txtShortName);
             this.Controls.Add(this.label4);
@@ -120,7 +154,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtUserEmail);
             this.Controls.Add(this.label1);
-            this.Name = "UserAdmin";
+            this.Name = "UCUserAdmin";
             this.Size = new System.Drawing.Size(738, 447);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -138,5 +172,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtShortName;
         private System.Windows.Forms.Button btnCreateUser;
+        private System.Windows.Forms.LinkLabel lnkGetUsers;
+        private System.Windows.Forms.ComboBox cboUsers;
+        private System.Windows.Forms.CheckBox chkActive;
     }
 }
