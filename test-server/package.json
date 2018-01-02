@@ -7,7 +7,7 @@
     "lint": "eslint . --cache",
     "lint-fix": "eslint . --cache --fix",
     "start": "node index",
-    "test": "./run-tests.sh"
+    "test": "cd ../tests && dotnet xunit"
   },
   "repository": {
     "type": "git",

@@ -12,8 +12,6 @@ manager.on('server-started', (server) => {
     windowsHide: true
   });
 
-  console.log(`[Test Manager] test exit code: ${test.status}`);
-
   server.close();
   process.exit(test.status);
 });

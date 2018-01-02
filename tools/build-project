@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# don't output the false errors of dotnet
+# build
+echo "Running dotnet build..."
+dotnet build > /dev/null 2>&1
+
+set -x
+set -e
+dotnet restore ZulipCSharp.sln
+cd test-server
+npm i
+
+# make sure xunit is binded to dotnet
+cd ../Tests
+dotnet restore

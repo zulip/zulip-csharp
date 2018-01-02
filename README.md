@@ -2,24 +2,24 @@
 ZulipCSharp is a library to connect to a Zulip server via API based on .NET Core
 
 ## Devlopment
-Fork the repo and then clone it and 
+Fork the repo and then clone it and
 then follow instructions per platform
 
 Join us at [zulip chat ZulipAPI.NET stream](https://chat.zulip.org/#narrow/stream/ZulipAPI.2ENET)
 
 ### Windows and MacOS
-If you havn't already download 
+If you havn't already download
 [Visual Studio IDE form here](https://www.visualstudio.com/vs/), and [node.js](https://nodejs.org/en/download/).
 
 ```
 # download dependencies for local server
-cd TestServer
+cd test-server
 npm i
 ```
 
 
 ### Linux
-Since Visual Studio IDE is not avalible for linux we need 
+Since Visual Studio IDE is not avalible for linux we need
 to get `dotnet`. Node for test server.
 
  - To get dotnet follow instructions here https://www.microsoft.com/net/download/linux
@@ -44,12 +44,12 @@ unit tests: add tests for file
 ```
 
 Test the code. We use xUnit for testing.
-Our test need a local server so install 
-dependencies in `TestServer`
+Our test need a local server so install
+dependencies in `test-server`
 
 
 ```bash
-# start the server 
+# start the server
 # and then run tests using Visual Studio IDE
 npm start
 ```
@@ -62,7 +62,7 @@ or to run test on command prompt/terminal
 ./run-tests # for MacOS and linux
 ```
 
-linting 
+linting
 ```
 npm run lint
 # if you have common error use

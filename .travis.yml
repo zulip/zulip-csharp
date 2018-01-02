@@ -5,14 +5,12 @@ dotnet: 2.0.0
 mono: none
 solution: ZulipCSharp.sln
 
-cache: 
-  - TestServer/node_modules
-
-install:
-  - ./build-project
+cache:
+  - test-server/node_modules
 
 script:
-  - ./run-tests
+  - ./tools/build-project
+  - ./tools/run-tests
 
 notifications:
   webhooks:

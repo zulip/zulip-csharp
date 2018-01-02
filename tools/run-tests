@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-cd TestServer
+cd ../test-server
 
 set -x
 npm run lint
