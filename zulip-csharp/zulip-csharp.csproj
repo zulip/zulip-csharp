@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>ZulipAPI</RootNamespace>
+    <Version>0.1.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/zulip/zulip-csharp</RepositoryUrl>
+    <PackageProjectUrl>https://zulip.org/</PackageProjectUrl>
+    <Copyright>MIT License</Copyright>
+    <Authors>penCsharpener</Authors>
+    <Company>Zulip</Company>
+    <PackageIconUrl>https://raw.githubusercontent.com/zulip/zulip-csharp/e26ae9be0d12b0f1e00196141ae66ea90ae890ac/Resources/Logo/zulip-csharp_logo.ico</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
