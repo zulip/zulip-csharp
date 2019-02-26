@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <!--*-->
+    <id>ZulipCSharp</id>
+    <!--*-->
+    <version>0.0.1</version>
+    <title>ZulipCSharp</title>
+    <!--*-->
+    <authors>penCsharpener</authors>
+    <owners>penCsharpener</owners>
+    <!--
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <iconUrl></iconUrl>
+-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!--*-->
+    <description>create users, get messages, streams, users</description>
+    <!--*-->
+    <releaseNotes>alpha</releaseNotes>
+    <copyright>Copyright ©  2017</copyright>
+    <tags>
+    </tags>
+    <dependencies>
+      <!--
+      <dependency id="SampleDependency" version="1.0" />
+-->
+    </dependencies>
+  </metadata>
+</package>
