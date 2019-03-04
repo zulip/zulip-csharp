@@ -8,7 +8,16 @@ namespace ZulipAPI {
 
         public string UserEmail { get; }
         public string Password { get; }
-        public string UserSecret { get; }
+
+        private string _apiKey;
+        public string ApiKey {
+            get => _apiKey;
+            set {
+                _apiKey = value;
+                _Base64Authorisation = GetAuthorisationString(UserEmail, _apiKey);
+            }
+        }
+
         public bool UserSecretIsPassword { get; }
         private string _Base64Authorisation;
 
@@ -24,15 +33,15 @@ namespace ZulipAPI {
             this.UserEmail = UserEmail;
             this.UserSecretIsPassword = UserSecretIsPassword;
             if (UserSecretIsPassword) {
-                throw new Exception("feature not implemented yet");
+                this.Password = UserSecret;
             } else {
-                this.UserSecret = UserSecret;
+                this.ApiKey = UserSecret;
             }
             _Base64Authorisation = GetAuthorisationString(UserEmail, UserSecret);
         }
 
         private string GetAuthorisationString(string Username, string ApiKey) {
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(Username + ':' + ApiKey));
+            return $"{Username}:{ApiKey}".ToUTF8Base64();
         }
 
         /// <summary>

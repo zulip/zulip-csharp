@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ZulipAPI
 {
@@ -13,6 +15,11 @@ namespace ZulipAPI
 
         public ZulipServer Server { get; set; }
         public ZulipAuthentication Authentication { get; set; }
+
+        public ZulipClient(string serverUrl, string userEmail, string password) {
+            Server = new ZulipServer(serverUrl);
+            Authentication = new ZulipAuthentication(userEmail, password, true);
+        }
 
         /// <summary>
         /// Requires two objects that together enable the API user authentication.
@@ -34,15 +41,28 @@ namespace ZulipAPI
             this.Authentication = AuthHelper.ZulipAuth;
         }
 
-        /// <summary>
-        /// Dev comment: this probably needs to work differently when the user supplies the password rather than the api key as user secret.
-        /// </summary>
-        /// <returns></returns>
         public HttpClient Login() {
             HttpClient hc = new HttpClient();
             hc.BaseAddress = Server.BaseAddress;
             if (Authentication.UserSecretIsPassword) {
-                throw new Exception("feature not yet implemented");
+                var parameters = new List<KeyValuePair<string, string>>() {
+                new KeyValuePair<string, string>("username", Authentication.UserEmail),
+                new KeyValuePair<string, string>("password", Authentication.Password)
+                };
+                var request = new HttpRequestMessage(HttpMethod.Post, $"{Server.ServerApiURL}/fetch_api_key");
+                request.Content = new FormUrlEncodedContent(parameters);
+
+                using (HttpResponseMessage response = hc.SendAsync(request).Result) {
+                    using (var content = response.Content) {
+                        var jsonAnswer = content.ReadAsStringAsync().Result;
+                        var apiKey = JSONHelper.Parse<FetchApiKeyResult>(jsonAnswer);
+                        if (apiKey.Result == "success") {
+                            Authentication.ApiKey = string.Copy(apiKey.ApiKey);
+                            Authentication.SetAuthHeader(hc);
+                        }
+                    }
+                }
+
             } else {
                 Authentication.SetAuthHeader(hc);
             }
