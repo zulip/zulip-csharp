@@ -15,8 +15,8 @@ namespace SampleApp {
                 await users.GetUsersAsync();
                 dgvUsers.DataSource = users.UserCollection;
                 txtResponse.Text = users.JsonOutput;
-            } catch (System.Exception) {
-
+            } catch (System.Exception ex) {
+                MessageBox.Show(ex.ToString());
             }
         }
     }

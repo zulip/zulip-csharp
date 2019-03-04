@@ -33,7 +33,12 @@ namespace SampleApp {
             txtZulipServerURL.TextChanged += txtLogin_TextChanged;
             txtUsername.TextChanged += txtLogin_TextChanged;
             txtApiKey.TextChanged += txtLogin_TextChanged;
-            lnkZulipRCAuth.LinkClicked += new LinkLabelLinkClickedEventHandler(lnkZulipRCAuth_LinkClicked);
+            txtPassword.TextChanged += txtLogin_TextChanged;
+            lnkZulipRCAuth.LinkClicked += (s, e) => ZulipRCLogin();
+            lnkShowPwd.Click += (s, e) => txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
+            btnLoginWithPwd.Click += (s, e) => {
+                Program.GetZulipClient(txtUsername.Text, txtPassword.Text);
+            };
         }
 
         private void UCUsersToolStripMenuItem_Click(object sender, System.EventArgs e) {
@@ -55,7 +60,8 @@ namespace SampleApp {
         private void txtLogin_TextChanged(object sender, System.EventArgs e) {
             Program.ServerURL = txtZulipServerURL.Text;
             Program.UserEmail = txtUsername.Text;
-            Program.UserSecret = txtApiKey.Text;
+            Program.ApiKey = txtApiKey.Text;
+            Program.Password = txtPassword.Text;
         }
 
         private void ZulipRCLogin(bool AutoLogin = false) {
@@ -91,13 +97,8 @@ namespace SampleApp {
             if (Program.client != null) {
                 txtZulipServerURL.Text = Program.client.Server.ServerBaseURL;
                 txtUsername.Text = Program.client.Authentication.UserEmail;
-                txtApiKey.Text = Program.client.Authentication.UserSecret;
+                txtApiKey.Text = Program.client.Authentication.ApiKey;
             }
         }
-
-        private void lnkZulipRCAuth_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            ZulipRCLogin();
-        }
-
     }
 }
