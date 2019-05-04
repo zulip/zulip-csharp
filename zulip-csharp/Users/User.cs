@@ -18,6 +18,8 @@ namespace ZulipAPI {
         public bool IsActive { get; set; }
         [JsonProperty("bot_type")]
         public int? BotType { get; set; }
+        [JsonProperty("is_guest")]
+        public bool IsGuest { get; set; }
         [JsonProperty("email")]
         public string Email { get; set; }
         [JsonProperty("bot_owner")]
