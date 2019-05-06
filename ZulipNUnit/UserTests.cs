@@ -32,7 +32,7 @@ namespace ZulipNUnit {
         }
 
         [Test]
-        public async Task GetUsers() {
+        public void GetUsers() {
             var count = _users.Count;
 
             Assert.IsTrue(count > 0);

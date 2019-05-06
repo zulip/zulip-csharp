@@ -14,7 +14,7 @@ namespace ZulipNUnit {
         MessageEndPoint messageEndpoint;
 
         [SetUp]
-        public async Task Setup() {
+        public void Setup() {
             if (File.Exists(".zuliprc")) {
                 zclient = ZulipServer.Login(".zuliprc");
                 messageEndpoint = zclient.GetMessageEndPoint();

@@ -10,7 +10,7 @@ namespace ZulipNUnit {
         StreamEndPoint streamEndpoint;
 
         [SetUp]
-        public async Task Setup() {
+        public void Setup() {
             if (File.Exists(".zuliprc")) {
                 zclient = ZulipServer.Login(".zuliprc");
                 streamEndpoint = zclient.GetStreamEndPoint();
