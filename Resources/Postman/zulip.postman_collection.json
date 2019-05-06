@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "396dd9be-818a-482d-8ba6-f1dc77d52c05",
+		"name": "zulip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "fetch api key",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23cc21dd-68bc-40af-9c43-20410de13f10",
+						"exec": [
+							"var data = pm.response.json();\r",
+							"pm.environment.set('api_key', data.api_key);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}fetch_api_key?username={{username}}&password={{password}}",
+					"host": [
+						"{{url}}fetch_api_key"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "{{username}}"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}users",
+					"host": [
+						"{{url}}users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deactivate user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}users/{{demoUserId}}",
+					"host": [
+						"{{url}}users"
+					],
+					"path": [
+						"{{demoUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reactivate user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}users/{{demoUserId}}/reactivate",
+					"host": [
+						"{{url}}users"
+					],
+					"path": [
+						"{{demoUserId}}",
+						"reactivate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit user",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}users/{{demoUserId}}?full_name=\"John Doe\"&is_admin=false&is_guest=false",
+					"host": [
+						"{{url}}users"
+					],
+					"path": [
+						"{{demoUserId}}"
+					],
+					"query": [
+						{
+							"key": "full_name",
+							"value": "\"John Doe\""
+						},
+						{
+							"key": "is_admin",
+							"value": "false"
+						},
+						{
+							"key": "is_guest",
+							"value": "false"
+						},
+						{
+							"key": "is_active",
+							"value": "false",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get streams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}streams",
+					"host": [
+						"{{url}}streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}messages?anchor=120149363&num_before=30&num_after=30&narrow=[{ 'operator': 'sender', 'operand': '{{username}}' }, { 'operator': 'stream', 'operand': '{{demoStreamToSend}}' }]&client_gravatar=true&apply_markdown=true&use_first_unread_anchor=false",
+					"host": [
+						"{{url}}messages"
+					],
+					"query": [
+						{
+							"key": "anchor",
+							"value": "120149363"
+						},
+						{
+							"key": "num_before",
+							"value": "30"
+						},
+						{
+							"key": "num_after",
+							"value": "30"
+						},
+						{
+							"key": "narrow",
+							"value": "[{ 'operator': 'sender', 'operand': '{{username}}' }, { 'operator': 'stream', 'operand': '{{demoStreamToSend}}' }]"
+						},
+						{
+							"key": "client_gravatar",
+							"value": "true"
+						},
+						{
+							"key": "apply_markdown",
+							"value": "true"
+						},
+						{
+							"key": "use_first_unread_anchor",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send stream message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}messages?type=stream&to={{demoStreamToSend}}&content=\"sample text\"&subject=\"API Test\"",
+					"host": [
+						"{{url}}messages"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "stream"
+						},
+						{
+							"key": "to",
+							"value": "{{demoStreamToSend}}"
+						},
+						{
+							"key": "content",
+							"value": "\"sample text\""
+						},
+						{
+							"key": "subject",
+							"value": "\"API Test\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send private message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}messages?type=private&to={{username}}&content=\"sample text\"",
+					"host": [
+						"{{url}}messages"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "private"
+						},
+						{
+							"key": "to",
+							"value": "{{username}}"
+						},
+						{
+							"key": "content",
+							"value": "\"sample text\""
+						},
+						{
+							"key": "subject",
+							"value": "\"API Test\"",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{username}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "34948f70-578f-4804-a8d8-851b945f1b27",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c0a8facf-d30f-4611-a268-573c228cf5a2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
