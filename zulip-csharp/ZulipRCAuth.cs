@@ -5,12 +5,9 @@ namespace ZulipAPI {
 
     public class ZulipRCAuth {
 
-        public ZulipAuthentication ZulipAuth { get; private set; }
-        public ZulipServer Server { get; private set; }
-
-        public string Username { get; set; }
-        public string UserSecret { get; set; }
-        public string ServerURL { get; set; }
+        public string Username { get; private set; }
+        public string UserSecret { get; private set; }
+        public string ServerURL { get; private set; }
 
         public ZulipRCAuth(string ZulipRCPath) {
             LoadZulipRCasString(ZulipRCPath);
@@ -46,8 +43,6 @@ namespace ZulipAPI {
                 throw new FileNotFoundException(ZulipRCPath + "could not be found.");
             }
 
-            Server = new ZulipServer(ServerURL);
-            ZulipAuth = new ZulipAuthentication(Username, UserSecret);
         }
 
         private bool ZulipRCIsValid(string ZulipRCPath) {

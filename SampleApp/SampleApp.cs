@@ -36,8 +36,8 @@ namespace SampleApp {
             txtPassword.TextChanged += txtLogin_TextChanged;
             lnkZulipRCAuth.LinkClicked += (s, e) => ZulipRCLogin();
             lnkShowPwd.Click += (s, e) => txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
-            btnLoginWithPwd.Click += (s, e) => {
-                Program.GetZulipClient(txtUsername.Text, txtPassword.Text);
+            btnLoginWithPwd.Click += async (s, e) => {
+                await Program.GetZulipClient(txtUsername.Text, txtPassword.Text);
             };
         }
 
@@ -60,7 +60,6 @@ namespace SampleApp {
         private void txtLogin_TextChanged(object sender, System.EventArgs e) {
             Program.ServerURL = txtZulipServerURL.Text;
             Program.UserEmail = txtUsername.Text;
-            Program.ApiKey = txtApiKey.Text;
             Program.Password = txtPassword.Text;
         }
 
@@ -95,9 +94,9 @@ namespace SampleApp {
             }
 
             if (Program.client != null) {
-                txtZulipServerURL.Text = Program.client.Server.ServerBaseURL;
-                txtUsername.Text = Program.client.Authentication.UserEmail;
-                txtApiKey.Text = Program.client.Authentication.ApiKey;
+                txtZulipServerURL.Text = Program.client.ServerApiURL;
+                txtUsername.Text = Program.client.UserEmail;
+                txtApiKey.Text = Program.client.APIKey;
             }
         }
     }

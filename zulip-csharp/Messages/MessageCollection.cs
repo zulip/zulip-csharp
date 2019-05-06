@@ -1,10 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace ZulipAPI {
+namespace ZulipAPI.Messages {
 
     public class MessageCollection : CollectionBase, IEnumerable, IEnumerator {
 
         private int index = -1;
+        public IList<MessageBase> Items => this.List.Cast<MessageBase>().ToList();
 
         public MessageCollection() {
             this.index = -1;
@@ -13,6 +16,14 @@ namespace ZulipAPI {
         public void Add(MessageBase message) {
             if (message != null) {
                 this.List.Add(message);
+            }
+        }
+
+        public void AddRange(IEnumerable<MessageBase> messages) {
+            if (messages != null) {
+                foreach (var message in messages) {
+                    this.List.Add(message);
+                }
             }
         }
 

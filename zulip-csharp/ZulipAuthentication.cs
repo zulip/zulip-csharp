@@ -45,7 +45,7 @@ namespace ZulipAPI {
         }
 
         /// <summary>
-        /// Requires valid credentials (username, apikey) pasted in the contrustor. Set the AuthenticationHeaderValue of the HttpClient.
+        /// Requires valid credentials (username, apikey) pasted in the contructor. Set the AuthenticationHeaderValue of the HttpClient.
         /// </summary>
         /// <param name="HttpClient"></param>
         public void SetAuthHeader(HttpClient HttpClient) {

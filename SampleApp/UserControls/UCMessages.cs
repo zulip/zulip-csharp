@@ -1,13 +1,22 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using ZulipAPI;
+using ZulipAPI.Messages;
+using ZulipAPI.Streams;
+using ZulipAPI.Users;
 
 namespace SampleApp.UserControls {
     public partial class UCMessages : UserControl {
+
+        private MessageEndPoint msgEndPoint;
+        private UserEndPoint userEndPoint;
+        private StreamEndPoint streamEndPoint;
+
         public UCMessages() {
             InitializeComponent();
-            AddHandlers();
             InitControls();
+            AddHandlers();
             ViewHelpers.DataGridViewHelper.SetDGVProperties(dgvMessages);
             btnGet.Click += btnGet_Click;
         }
@@ -25,10 +34,8 @@ namespace SampleApp.UserControls {
 
         private async void BtnSendToStream_Click(object sender, EventArgs e) {
             if (cboStreams.SelectedValue != null && txtStreamMsg.Text != "" && txtStreamTopic.Text != "") {
-                    var sm = new StreamMessage(Program.client);
                 try {
-                    await sm.PostStreamMessage(cboStreams.SelectedValue.ToString(), txtStreamTopic.Text, txtStreamMsg.Text);
-                    lblStreamResponse.Text = $"{sm.Response.Result}: id {sm.Response.ID}";
+                    await msgEndPoint.SendStreamMessage(cboStreams.SelectedValue.ToString(), txtStreamTopic.Text, txtStreamMsg.Text);
                 } catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
                 }
@@ -37,10 +44,8 @@ namespace SampleApp.UserControls {
 
         private async void BtnSendToPrivate_Click(object sender, EventArgs e) {
             if (cboUsers.SelectedValue != null && txtPrivateMsg.Text != "") {
-                    var pm = new PrivateMessage(Program.client);
                 try {
-                    await pm.PostPrivateMessage(cboUsers.SelectedValue.ToString(), txtPrivateMsg.Text);
-                    lblPMResponse.Text = $"{pm.Response.Result}: id {pm.Response.ID}";
+                    await msgEndPoint.SendPrivateMessage(cboUsers.SelectedValue.ToString(), txtPrivateMsg.Text);
                 } catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
                 }
@@ -48,18 +53,20 @@ namespace SampleApp.UserControls {
         }
 
         private async void btnGet_Click(object sender, System.EventArgs e) {
-            Program.GetZulipClient();
-            Messages msgs = new Messages(Program.client);
+            await Program.GetZulipClient();
             try {
-                await msgs.GetMessagesAsync((long)numAnchor.Value, (long)numBefore.Value, (long)numAfter.Value);
-                dgvMessages.DataSource = msgs.MessageCollection;
-                txtResponse.Text = msgs.JsonOutput;
+                var msgs = await msgEndPoint.GetMessages((ulong)numAnchor.Value, (int)numBefore.Value, (int)numAfter.Value);
+                dgvMessages.DataSource = msgs;
             } catch (System.Exception ex) {
                 MessageBox.Show(ex.ToString());
             }
         }
 
         private void InitControls() {
+            msgEndPoint = msgEndPoint ?? Program.client.GetMessageEndPoint();
+            userEndPoint = userEndPoint ?? Program.client.GetUserEndPoint();
+            streamEndPoint = streamEndPoint ?? Program.client.GetStreamEndPoint();
+
             txtPrivateMsg.Text = $"new private message sent via .NET client at {DateTime.Now}";
             txtStreamMsg.Text = $"new stream message sent via .NET client at {DateTime.Now}";
             txtStreamTopic.Text = "API Test";
@@ -72,19 +79,19 @@ namespace SampleApp.UserControls {
         }
 
         private async void lnkFillCombos_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            Program.GetZulipClient();
+            await Program.GetZulipClient();
             try {
-                Users users = new Users(Program.client);
-                await users.GetUsersAsync();
+
+                IList<User> users = await userEndPoint.GetUsers();
                 cboUsers.DisplayMember = nameof(User.FullName);
                 cboUsers.ValueMember = nameof(User.Email);
-                cboUsers.DataSource = users.UserCollection;
+                cboUsers.DataSource = users;
 
-                Streams streams = new Streams(Program.client);
-                await streams.GetStreamsAsync();
+
+                IList<Stream> streams = await streamEndPoint.GetStreams();
                 cboStreams.DisplayMember = nameof(Stream.Name);
                 cboStreams.ValueMember = nameof(Stream.Name);
-                cboStreams.DataSource = streams.StreamCollection;
+                cboStreams.DataSource = streams;
 
             } catch (System.Exception ex) {
                 MessageBox.Show(ex.ToString());

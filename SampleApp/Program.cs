@@ -18,11 +18,8 @@ namespace SampleApp {
             get { return _userEmail; }
             set { _userEmail = value; Connected = false; }
         }
-        private static string _apiKey;
-        public static string ApiKey {
-            get { return _apiKey; }
-            set { _apiKey = value; Connected = false; }
-        }
+        public static string ApiKey => client?.APIKey;
+
         private static string _password;
         public static string Password {
             get { return _password; }
@@ -36,26 +33,25 @@ namespace SampleApp {
 
         public static ZulipClient client;
 
-        public static void GetZulipClient() {
-            if (!Connected && !string.IsNullOrEmpty(ApiKey)) {
+        public static async Task GetZulipClient() {
+            if (!Connected && !string.IsNullOrEmpty(Password)) {
                 ZulipServer ZuSrv = new ZulipServer(ServerURL);
-                ZulipAuthentication ZuAuth = new ZulipAuthentication(UserEmail, ApiKey);
-                client = new ZulipClient(ZuSrv, ZuAuth);
+                client = await ZuSrv.LoginAsync(UserEmail, Password);
                 Connected = client != null;
             }
         }
 
         public static void GetZulipClient(string ZulipRCPath) {
             if (!Connected) {
-                client = new ZulipClient(ZulipRCPath);
+                client = ZulipServer.Login(ZulipRCPath);
                 Connected = client != null && !string.IsNullOrEmpty(ApiKey);
             }
         }
 
-        public static void GetZulipClient(string userEmail, string password) {
+        public static async Task GetZulipClient(string userEmail, string password) {
             if (!Connected) {
-                client = new ZulipClient(ServerURL, userEmail, password);
-                var http = client.Login();
+                ZulipServer ZuSrv = new ZulipServer(ServerURL);
+                client = await ZuSrv.LoginAsync(UserEmail, Password);
                 Connected = client != null && !string.IsNullOrEmpty(ApiKey);
             }
         }

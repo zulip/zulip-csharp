@@ -1,9 +1,6 @@
 namespace ZulipAPI
 {
-    /// <summary>
-    ///
-    /// </summary>
-    public enum EndPoint {
+    public enum EndPoints {
         FetchApiKey,
         RealmEmoji,
         Events,
@@ -19,7 +16,7 @@ namespace ZulipAPI
     /// <summary>
     /// Returns end point URL parts with beginning or trailing '/'
     /// </summary>
-    public struct EndPointPath {
+    public struct EndPointPaths {
         public const string FetchApiKey = "fetch_api_key";
         public const string RealmEmoji = "realm/emoji";
         public const string Events = "events";

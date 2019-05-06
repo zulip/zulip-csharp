@@ -1,23 +1,18 @@
 using Newtonsoft.Json;
 using System;
 
-namespace ZulipAPI {
+namespace ZulipAPI.Messages {
     public class EditHistory {
 
-        [JsonProperty("user_id")]
         public uint UserID { get; set; }
-        [JsonProperty("prev_rendered_content_version")]
-        public uint PrevRenderedContentVersion { get; set; }
-        [JsonProperty("timestamp")]
-        public ulong TimeStampUnix { get; set; }
-        public DateTime TimeStamp { get { return UnixEpoch.Epoch.AddSeconds(TimeStampUnix); } }
-        [JsonProperty("prev_rendered_content")]
         public string PrevRenderedContent { get; set; }
-        [JsonProperty("prev_content")]
+        public uint PrevRenderedContentVersion { get; set; }
+        public DateTime TimeStampUnix { get { return UnixEpoch.Epoch.AddSeconds(TimeStamp); } }
+        public ulong TimeStamp { get; set; }
         public string PrevContent { get; set; }
 
         public override string ToString() {
-            return $"{PrevContent}"; 
+            return $"{PrevContent}";
         }
 
     }

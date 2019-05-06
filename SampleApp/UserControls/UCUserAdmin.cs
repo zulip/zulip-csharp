@@ -1,8 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using ZulipAPI;
+using ZulipAPI.Users;
 
 namespace SampleApp.UserControls {
     public partial class UCUserAdmin : UserControl {
+
+        private UserEndPoint userEndPoint;
 
         public UCUserAdmin() {
             InitializeComponent();
@@ -26,8 +31,9 @@ namespace SampleApp.UserControls {
         }
 
         private async void BtnCreateUser_Click(object sender, System.EventArgs e) {
-            var u = new Users(Program.client);
-            await u.CreateUserAsync(txtUserEmail.Text, txtFullName.Text, txtUserPassword.Text, txtShortName.Text);
+            userEndPoint = userEndPoint ?? Program.client.GetUserEndPoint();
+            var user = new User(txtUserEmail.Text, txtUserPassword.Text, txtShortName.Text, txtFullName.Text); 
+            await userEndPoint.CreateUser(user);
         }
 
         private void ChkActive_CheckedChanged(object sender, System.EventArgs e) {
@@ -39,9 +45,9 @@ namespace SampleApp.UserControls {
                 try {
                     var SelectedUser = (User)cboUsers.SelectedItem;
                     switch (toggle) {
-                        case true: await users.ReactivateUserAsync(SelectedUser.Email);
+                        case true: await userEndPoint.ReactivateUser(SelectedUser);
                             break;
-                        case false: await users.DeactivateUserAsync(SelectedUser.Email);
+                        case false: await userEndPoint.DeactivateUser(SelectedUser);
                             break;
                     }
                 } catch (System.Exception ex) {
@@ -57,17 +63,17 @@ namespace SampleApp.UserControls {
             }
         }
 
-        private Users users;
         private bool FillingDataSource;
+        private IList<User> _users;
         private async void LnkGetUsers_Click(object sender, System.EventArgs e) {
-            Program.GetZulipClient();
+            await Program.GetZulipClient();
             FillingDataSource = true;
             try {
-                users = new Users(Program.client);
-                await users.GetUsersAsync();
+                userEndPoint = userEndPoint ?? Program.client.GetUserEndPoint();
+                _users = await userEndPoint.GetUsers();
                 cboUsers.DisplayMember = nameof(User.FullName);
                 cboUsers.ValueMember = nameof(User.Email);
-                cboUsers.DataSource = users.UserCollection;
+                cboUsers.DataSource = _users;
             } catch (System.Exception ex) {
                 MessageBox.Show(ex.ToString());
             }

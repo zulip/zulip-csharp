@@ -1,4 +1,7 @@
+using RestSharp;
 using System;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace ZulipAPI {
 
@@ -6,8 +9,8 @@ namespace ZulipAPI {
 
         public string ServerBaseURL { get; }
         public ServerApiVersion ApiVersion { get; } = ZulipServer.ServerApiVersion.v1;
-        public const string ApiPathV1 = "/api/v1";
-        public string ServerApiURL { get; } = ApiPathV1;
+        internal const string ApiPathV1 = "/api/v1";
+        public string ServerApiURL { get; }
         public Uri BaseAddress { get; }
 
         /// <summary>
@@ -26,6 +29,30 @@ namespace ZulipAPI {
 
             this.ApiVersion = ApiVersion;
             this.BaseAddress = new Uri(this.ServerBaseURL);
+        }
+
+        public async Task<ZulipClient> LoginAsync(string userEmail, string password) {
+            var RestClient = new RestClient(ServerApiURL);
+            var apiKey = "";
+            if (!string.IsNullOrEmpty(userEmail) && !string.IsNullOrEmpty(password)) {
+                var request = new RestRequest("fetch_api_key", Method.POST);
+                request.RequestFormat = DataFormat.Json;
+                request.AddParameter("username", userEmail);
+                request.AddParameter("password", password);
+                IRestResponse<FetchApiKeyResult> response = await RestClient.ExecutePostTaskAsync<FetchApiKeyResult>(request);
+                apiKey = response.Data?.ApiKey;
+            }
+            return new ZulipClient(userEmail, apiKey) {
+                ServerApiURL = ServerApiURL,
+            };
+        }
+
+        public static ZulipClient Login(string pathZulipRCFile) {
+            var zrc = new ZulipRCAuth(pathZulipRCFile);
+
+            return new ZulipClient(zrc.Username, zrc.UserSecret) {
+                ServerApiURL = new ZulipServer(zrc.ServerURL).ServerApiURL,
+            };
         }
 
         /// <summary>

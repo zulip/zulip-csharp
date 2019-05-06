@@ -1,11 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+
 namespace ZulipAPI {
 
     public class ResponseUsers : ResponseBase {
 
-        [Newtonsoft.Json.JsonProperty("members")]
-        public object Members { get; set; }
-        [Newtonsoft.Json.JsonProperty("code")]
-        public object Code { get; set; }
+        public IList<User> Members { get; set; }
 
     }
 }

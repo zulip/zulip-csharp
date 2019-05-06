@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ZulipAPI {
+namespace ZulipAPI.Messages {
     public class ResponseSentMessage : ResponseBase {
 
-        [Newtonsoft.Json.JsonProperty("id")]
-        public object ID { get; set; }
+        public ulong Id { get; set; }
 
     }
 }

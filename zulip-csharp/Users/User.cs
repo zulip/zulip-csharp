@@ -4,29 +4,36 @@ namespace ZulipAPI {
 
     public class User {
 
-        [JsonProperty("user_id")]
         public uint UserID { get; set; }
-        [JsonProperty("full_name")]
         public string FullName { get; set; }
-        [JsonProperty("is_admin")]
         public bool IsAdmin { get; set; }
-        [JsonProperty("is_bot")]
         public bool IsBot { get; set; }
-        [JsonProperty("avatar_url")]
         public string AvatarURL { get; set; }
-        [JsonProperty("is_active")]
         public bool IsActive { get; set; }
-        [JsonProperty("bot_type")]
         public int? BotType { get; set; }
-        [JsonProperty("is_guest")]
         public bool IsGuest { get; set; }
-        [JsonProperty("email")]
         public string Email { get; set; }
-        [JsonProperty("bot_owner")]
         public string BotOwner { get; set; }
+        public string TimeZone { get; set; }
+        public string Password { get; }
+        public string Shortname { get; }
 
         public User() {
 
+        }
+
+        /// <summary>
+        /// Constructor is solely for creating a new user.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="shortname"></param>
+        /// <param name="fullName"></param>
+        public User(string email, string password, string shortname, string fullName) {
+            Email = email;
+            FullName = fullName;
+            Password = password;
+            Shortname = shortname;
         }
 
         //public User(uint StreamID, string Name, string Description, bool InviteOnly) {

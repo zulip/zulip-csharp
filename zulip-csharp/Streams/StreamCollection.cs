@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ZulipAPI {
+namespace ZulipAPI.Streams {
 
     public class StreamCollection : CollectionBase, IEnumerable, IEnumerator {
 
@@ -16,6 +16,14 @@ namespace ZulipAPI {
         public void Add(Stream stream) {
             if (stream != null) {
                 this.List.Add(stream);
+            }
+        }
+
+        public void AddRange(IEnumerable<Stream> streams) {
+            if (streams != null) {
+                foreach (var stream in streams) {
+                    this.List.Add(stream);
+                }
             }
         }
 

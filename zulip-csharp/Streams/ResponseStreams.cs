@@ -1,8 +1,10 @@
-namespace ZulipAPI {
+using System.Collections;
+using System.Collections.Generic;
+
+namespace ZulipAPI.Streams {
     public class ResponseStreams : ResponseBase {
 
-        [Newtonsoft.Json.JsonProperty("streams")]
-        public object Streams { get; set; }
+        public IList<Stream> Streams { get; set; }
 
     }
 }

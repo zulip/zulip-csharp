@@ -1,20 +1,19 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ZulipAPI {
+namespace ZulipAPI.Streams {
 
     public class Stream {
 
-        [JsonProperty("stream_id")]
+        public bool IsAnnouncementOnly { get; set; }
         public uint StreamID { get; set; }
-        [JsonProperty("name")]
         public string Name { get; set; }
-        [JsonProperty("description")]
         public string Description { get; set; }
-        [JsonProperty("invite_only")]
+        public string RenderedDescription { get; set; }
         public bool InviteOnly { get; set; }
+        public ulong FirstMessageID { get; set; }
+        public bool HistoryPublicToSubscribers { get; set; }
 
         public Stream() {
 

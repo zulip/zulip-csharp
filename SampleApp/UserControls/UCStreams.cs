@@ -1,9 +1,11 @@
 using System.Windows.Forms;
 using ZulipAPI;
+using ZulipAPI.Streams;
 
 namespace SampleApp.UserControls {
     public partial class UCStreams : UserControl {
 
+        private StreamEndPoint streamEndPoint;
         public UCStreams() {
             InitializeComponent();
             ViewHelpers.DataGridViewHelper.SetDGVProperties(dgvStreams);
@@ -11,12 +13,11 @@ namespace SampleApp.UserControls {
         }
 
         private async void btnGet_Click(object sender, System.EventArgs e) {
-            Program.GetZulipClient();
-            Streams streams = new Streams(Program.client);
+            await Program.GetZulipClient();
+            streamEndPoint = streamEndPoint ?? Program.client.GetStreamEndPoint();
             try {
-                await streams.GetStreamsAsync();
-                dgvStreams.DataSource = streams.StreamCollection;
-                txtResponse.Text = streams.JsonOutput;
+                var streams = await streamEndPoint.GetStreams();
+                dgvStreams.DataSource = streams;
             } catch (System.Exception ex) {
                 MessageBox.Show(ex.Message);
             }

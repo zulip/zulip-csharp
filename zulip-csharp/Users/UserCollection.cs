@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 
 namespace ZulipAPI {
 
@@ -10,14 +11,22 @@ namespace ZulipAPI {
             this.index = -1;
         }
 
-        public void Add(User stream) {
-            if (stream != null) {
-                this.List.Add(stream);
+        public void Add(User user) {
+            if (user != null) {
+                this.List.Add(user);
             }
         }
 
-        public void Remove(User stream) {
-            this.List.Remove(stream);
+        public void AddRange(IEnumerable<User> users) {
+            if (users != null) {
+                foreach (var user in users) {
+                    this.List.Add(user);
+                }
+            }
+        }
+
+        public void Remove(User user) {
+            this.List.Remove(user);
         }
 
         IEnumerator IEnumerable.GetEnumerator() {

@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,15 +13,35 @@ namespace ZulipNUnit {
         }
 
         [Test]
-        public async Task TestZulipRC() {
-            var count = 0;
-            if (File.Exists(".zuliprc")) {
-                var client = new ZulipClient(".zuliprc");
-                var userEndpoint = new Users(client);
-                await userEndpoint.GetUsersAsync();
-                count = userEndpoint.UserCollection.Count;
+        public void TestZulipRC() {
+            var zuliprc = ".zuliprc";
+            var apiKey = "";
+            if (File.Exists(zuliprc)) {
+                var zulipClient = ZulipServer.Login(zuliprc);
+                apiKey = zulipClient.APIKey;
             }
-            Assert.IsTrue(count > 0);
+            Assert.IsTrue(!string.IsNullOrEmpty(apiKey));
+        }
+
+        [Test]
+        public async Task ZulipWithPassword() {
+            const string passwordPath = "zulipcredentials.txt";
+            var passwordFromFile = "";
+            var serverURL = "";
+            var email = "";
+            if (!File.Exists(passwordPath)) {
+                await File.WriteAllTextAsync(passwordPath, "mysecrethere\nhttps://chat.zulip.org\nemail@domain.com");
+            }
+            if (File.Exists(passwordPath)) {
+                var lines = await File.ReadAllLinesAsync(passwordPath);
+                passwordFromFile = lines[0];
+                serverURL = lines[1];
+                email = lines[2];
+            }
+
+            var client = await new ZulipServer(serverURL).LoginAsync(email, passwordFromFile);
+
+            Assert.IsTrue(!string.IsNullOrEmpty(client.APIKey));
         }
     }
 }
