@@ -2,304 +2,937 @@
 	"info": {
 		"_postman_id": "396dd9be-818a-482d-8ba6-f1dc77d52c05",
 		"name": "zulip",
+		"description": "useful references\nhttps://zulipchat.com/api/rest\nhttps://github.com/zulip/zulip/blob/master/zproject/urls.py\n\nand follow the method paths in this folder:\n\nhttps://github.com/zulip/zulip/tree/master/zerver/views",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "fetch api key",
+			"name": "Auth",
+			"item": [
+				{
+					"name": "fetch api key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "23cc21dd-68bc-40af-9c43-20410de13f10",
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.environment.set('api_key', data.api_key);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}fetch_api_key?username={{username}}&password={{password}}",
+							"host": [
+								"{{url}}fetch_api_key"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "{{username}}"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Invites",
+					"item": [
+						{
+							"name": "get user invites",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}invites",
+									"host": [
+										"{{url}}invites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "post invite",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}invites?invitee_emails=someperson@somedomain.com&stream_ids=[108186]",
+									"host": [
+										"{{url}}invites"
+									],
+									"query": [
+										{
+											"key": "invitee_emails",
+											"value": "someperson@somedomain.com"
+										},
+										{
+											"key": "stream_ids",
+											"value": "[108186]"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "revoke invite",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}invites/177069",
+									"host": [
+										"{{url}}invites"
+									],
+									"path": [
+										"177069"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "resend invite",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}invites/177069/resend",
+									"host": [
+										"{{url}}invites"
+									],
+									"path": [
+										"177069",
+										"resend"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "post multi invite",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}invites/multiuse?stream_ids=[108186]&invite_as=1",
+									"host": [
+										"{{url}}invites"
+									],
+									"path": [
+										"multiuse"
+									],
+									"query": [
+										{
+											"key": "stream_ids",
+											"value": "[108186]"
+										},
+										{
+											"key": "invite_as",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete multi invite",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}invites/multiuse/862",
+									"host": [
+										"{{url}}invites"
+									],
+									"path": [
+										"multiuse",
+										"862"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}users",
+							"host": [
+								"{{url}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deactivate user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}users/{{demoUserId}}",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"{{demoUserId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reactivate user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}users/{{demoUserId}}/reactivate",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"{{demoUserId}}",
+								"reactivate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}users/{{demoUserId}}?full_name=\"John Doe\"&is_admin=false&is_guest=false",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"{{demoUserId}}"
+							],
+							"query": [
+								{
+									"key": "full_name",
+									"value": "\"John Doe\""
+								},
+								{
+									"key": "is_admin",
+									"value": "false"
+								},
+								{
+									"key": "is_guest",
+									"value": "false"
+								},
+								{
+									"key": "is_active",
+									"value": "false",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post presence me",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}users/me/presence?status=idle&ping_only=true&new_user_input=true",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"me",
+								"presence"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "idle"
+								},
+								{
+									"key": "ping_only",
+									"value": "true"
+								},
+								{
+									"key": "new_user_input",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get another user presence",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}users/{{demoUserEmail}}/presence?",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"{{demoUserEmail}}",
+								"presence"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{demoUserEmail}}/presence",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get me/subscriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/users/me/subscriptions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/users/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete me",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/users/me##CAREFUL##",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"me"
+							],
+							"hash": "#CAREFUL##"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get attachments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}attachments",
+							"host": [
+								"{{url}}attachments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete attachment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}attachments/32",
+							"host": [
+								"{{url}}attachments"
+							],
+							"path": [
+								"32"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Streams",
+			"item": [
+				{
+					"name": "get streams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}streams",
+							"host": [
+								"{{url}}streams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get topics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}users/me/{{sampleStreamId}}/topics",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"me",
+								"{{sampleStreamId}}",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get stream id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}get_stream_id?stream={{sampleStreamName}}",
+							"host": [
+								"{{url}}get_stream_id"
+							],
+							"query": [
+								{
+									"key": "stream",
+									"value": "{{sampleStreamName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get stream members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}streams/{{sampleStreamId}}/members",
+							"host": [
+								"{{url}}streams"
+							],
+							"path": [
+								"{{sampleStreamId}}",
+								"members"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "efbcd427-109f-471b-949c-15b23af44733",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
 				{
 					"listen": "test",
 					"script": {
-						"id": "23cc21dd-68bc-40af-9c43-20410de13f10",
+						"id": "9593806a-4d6e-46ef-82f1-77652297ad6a",
+						"type": "text/javascript",
 						"exec": [
-							"var data = pm.response.json();\r",
-							"pm.environment.set('api_key', data.api_key);\r",
 							""
-						],
-						"type": "text/javascript"
+						]
 					}
 				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}fetch_api_key?username={{username}}&password={{password}}",
-					"host": [
-						"{{url}}fetch_api_key"
-					],
-					"query": [
-						{
-							"key": "username",
-							"value": "{{username}}"
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "get messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"key": "password",
-							"value": "{{password}}"
+						"url": {
+							"raw": "{{url}}messages?anchor={{defaultMsgAnchor}}&num_before=30&num_after=30&client_gravatar=true&apply_markdown=true&use_first_unread_anchor=false",
+							"host": [
+								"{{url}}messages"
+							],
+							"query": [
+								{
+									"key": "anchor",
+									"value": "{{defaultMsgAnchor}}"
+								},
+								{
+									"key": "num_before",
+									"value": "30"
+								},
+								{
+									"key": "num_after",
+									"value": "30"
+								},
+								{
+									"key": "narrow",
+									"value": "[{ 'operator': 'sender', 'operand': '{{username}}' }, { 'operator': 'stream', 'operand': '{{demoStreamToSend}}' }]",
+									"disabled": true
+								},
+								{
+									"key": "client_gravatar",
+									"value": "true"
+								},
+								{
+									"key": "apply_markdown",
+									"value": "true"
+								},
+								{
+									"key": "use_first_unread_anchor",
+									"value": "false"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get users",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{url}}users",
-					"host": [
-						"{{url}}users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deactivate user",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}users/{{demoUserId}}",
-					"host": [
-						"{{url}}users"
-					],
-					"path": [
-						"{{demoUserId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "reactivate user",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}users/{{demoUserId}}/reactivate",
-					"host": [
-						"{{url}}users"
-					],
-					"path": [
-						"{{demoUserId}}",
-						"reactivate"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "edit user",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}users/{{demoUserId}}?full_name=\"John Doe\"&is_admin=false&is_guest=false",
-					"host": [
-						"{{url}}users"
-					],
-					"path": [
-						"{{demoUserId}}"
-					],
-					"query": [
-						{
-							"key": "full_name",
-							"value": "\"John Doe\""
+				{
+					"name": "get message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"key": "is_admin",
-							"value": "false"
-						},
-						{
-							"key": "is_guest",
-							"value": "false"
-						},
-						{
-							"key": "is_active",
-							"value": "false",
-							"disabled": true
+						"url": {
+							"raw": "{{url}}messages/{{sampleMsgId}}",
+							"host": [
+								"{{url}}messages"
+							],
+							"path": [
+								"{{sampleMsgId}}"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get streams",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{url}}streams",
-					"host": [
-						"{{url}}streams"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get messages",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}messages?anchor=120149363&num_before=30&num_after=30&narrow=[{ 'operator': 'sender', 'operand': '{{username}}' }, { 'operator': 'stream', 'operand': '{{demoStreamToSend}}' }]&client_gravatar=true&apply_markdown=true&use_first_unread_anchor=false",
-					"host": [
-						"{{url}}messages"
-					],
-					"query": [
-						{
-							"key": "anchor",
-							"value": "120149363"
+				{
+					"name": "update message",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"key": "num_before",
-							"value": "30"
-						},
-						{
-							"key": "num_after",
-							"value": "30"
-						},
-						{
-							"key": "narrow",
-							"value": "[{ 'operator': 'sender', 'operand': '{{username}}' }, { 'operator': 'stream', 'operand': '{{demoStreamToSend}}' }]"
-						},
-						{
-							"key": "client_gravatar",
-							"value": "true"
-						},
-						{
-							"key": "apply_markdown",
-							"value": "true"
-						},
-						{
-							"key": "use_first_unread_anchor",
-							"value": "false"
+						"url": {
+							"raw": "{{url}}messages/{{sampleMsgId}}?topic_name&propagate_mode=change_one&content=\"sample text 2\"",
+							"host": [
+								"{{url}}messages"
+							],
+							"path": [
+								"{{sampleMsgId}}"
+							],
+							"query": [
+								{
+									"key": "topic_name",
+									"value": null,
+									"description": "optional"
+								},
+								{
+									"key": "propagate_mode",
+									"value": "change_one",
+									"description": "optional"
+								},
+								{
+									"key": "content",
+									"value": "\"sample text 2\"",
+									"description": "optional"
+								}
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "update message Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}messages/{{sampleMsgId}}",
+							"host": [
+								"{{url}}messages"
+							],
+							"path": [
+								"{{sampleMsgId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send stream message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}messages?type=stream&to={{demoStreamToSend}}&content=\"sample text\"&subject=\"API Test\"",
+							"host": [
+								"{{url}}messages"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "stream"
+								},
+								{
+									"key": "to",
+									"value": "{{demoStreamToSend}}"
+								},
+								{
+									"key": "content",
+									"value": "\"sample text\""
+								},
+								{
+									"key": "subject",
+									"value": "\"API Test\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send private message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}messages?type=private&to={{username}}&content=\"sample text\"",
+							"host": [
+								"{{url}}messages"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "private"
+								},
+								{
+									"key": "to",
+									"value": "{{username}}"
+								},
+								{
+									"key": "content",
+									"value": "\"sample text\""
+								},
+								{
+									"key": "subject",
+									"value": "\"API Test\"",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "send stream message",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}messages?type=stream&to={{demoStreamToSend}}&content=\"sample text\"&subject=\"API Test\"",
-					"host": [
-						"{{url}}messages"
-					],
-					"query": [
-						{
-							"key": "type",
-							"value": "stream"
+			"name": "Realm",
+			"item": [
+				{
+					"name": "generate 204 (connectivity test)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"key": "to",
-							"value": "{{demoStreamToSend}}"
-						},
-						{
-							"key": "content",
-							"value": "\"sample text\""
-						},
-						{
-							"key": "subject",
-							"value": "\"API Test\""
+						"url": {
+							"raw": "{{url}}generate_204",
+							"host": [
+								"{{url}}generate_204"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "get logo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}realm/logo?night=false",
+							"host": [
+								"{{url}}realm"
+							],
+							"path": [
+								"logo"
+							],
+							"query": [
+								{
+									"key": "night",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get emojis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/realm/emoji",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"realm",
+								"emoji"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get icon",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/realm/icon",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"realm",
+								"icon"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "send private message",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}messages?type=private&to={{username}}&content=\"sample text\"",
-					"host": [
-						"{{url}}messages"
-					],
-					"query": [
-						{
-							"key": "type",
-							"value": "private"
+			"name": "Bots",
+			"item": [
+				{
+					"name": "get bots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"key": "to",
-							"value": "{{username}}"
-						},
-						{
-							"key": "content",
-							"value": "\"sample text\""
-						},
-						{
-							"key": "subject",
-							"value": "\"API Test\"",
-							"disabled": true
+						"url": {
+							"raw": "{{url}}/bots",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bots"
+							]
 						}
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"auth": {
