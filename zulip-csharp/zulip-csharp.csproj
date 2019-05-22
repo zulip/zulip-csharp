@@ -11,6 +11,9 @@
     <Authors>penCsharpener</Authors>
     <Company>Zulip</Company>
     <PackageIconUrl>https://raw.githubusercontent.com/zulip/zulip-csharp/e26ae9be0d12b0f1e00196141ae66ea90ae890ac/Resources/Logo/zulip-csharp_logo.ico</PackageIconUrl>
+    <PackageId>ZulipAPI</PackageId>
+    <Product>ZulipAPI</Product>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,6 +28,13 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="RestSharp" Version="106.6.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
