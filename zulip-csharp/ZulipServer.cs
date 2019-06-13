@@ -55,6 +55,12 @@ namespace ZulipAPI {
             };
         }
 
+        public ZulipClient Login(string userEmail, string apiKey) {
+            return new ZulipClient(userEmail, apiKey) {
+                ServerApiURL = ServerApiURL,
+            };
+        }
+
         /// <summary>
         /// Checks whether the URL includes https:// or not and adds it if necessary. Also removes any trailing slash.
         /// </summary>

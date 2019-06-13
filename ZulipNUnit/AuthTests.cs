@@ -43,5 +43,14 @@ namespace ZulipNUnit {
 
             Assert.IsTrue(!string.IsNullOrEmpty(client.APIKey));
         }
+
+        [TestCase("https://chat.zulip.org", "", "")]
+        public async Task ZulipLoginWithEmailAndApiKeyTest(string serverURL, string userEmail, string apiKey) {
+            var srv = new ZulipServer(serverURL);
+            var client = srv.Login(userEmail, apiKey);
+            var sEndPoint = client.GetStreamEndPoint();
+            var streams = await sEndPoint.GetStreams();
+            Assert.IsTrue(streams?.Count > 0);
+        }
     }
 }
