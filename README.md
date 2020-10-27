@@ -1,4 +1,4 @@
-# zulip-csharp [![Build Status](https://travis-ci.org/zulip/zulip-csharp.svg?branch=master)](https://travis-ci.org/zulip/zulip-csharp)
+# zulip-csharp [![Build Status](https://travis-ci.com/zulip/zulip-csharp.svg?branch=master)](https://travis-ci.com/github/zulip/zulip-csharp)
 ZulipCSharp is a library to connect to a Zulip server via API based on .NET Core
 
 ## Devlopment
